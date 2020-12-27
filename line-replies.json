@@ -12249,14 +12249,6 @@
             "response": "I said I was only gonna say this once. You have until 6:14 PM. 6:14!"
         },
         {
-            "quote": 140,
-            "response": "Hey Phyllis, someone let the air out of your tires. Come quick."
-        },
-        {
-            "quote": 160,
-            "response": "I had to get your attention. This is an emergency. [the air is let out of one of Phyllis' tires]"
-        },
-        {
             "quote": "Why couldn't have you just said it? Why did you actually do it?",
             "response": "Listen, she ignored my ultimatum. Now what?"
         },
@@ -30087,6 +30079,7 @@
         {
             "quote": "I think it\u00ef\u00bf\u00bd\u00ef\u00bf\u00bd\u00ef\u00bf\u00bds definitely\u00ef\u00bf\u00bd\u00ef\u00bf\u00bd\u00ef\u00bf\u00bd Well, okay. Either way\u00ef\u00bf\u00bd\u00ef\u00bf\u00bd\u00ef\u00bf\u00bd",
             "response": "I think you\u00ef\u00bf\u00bd\u00ef\u00bf\u00bd\u00ef\u00bf\u00bdre only a teeny\u00ef\u00bf\u00bd\u00ef\u00bf\u00bd\u00ef\u00bf\u00bd"
+       
         },
         {
             "quote": "Either way, Dwight\u00ef\u00bf\u00bd\u00ef\u00bf\u00bd\u00ef\u00bf\u00bd I can\u00ef\u00bf\u00bd\u00ef\u00bf\u00bd\u00ef\u00bf\u00bdt be there for you. I\u00ef\u00bf\u00bd\u00ef\u00bf\u00bd\u00ef\u00bf\u00bdm sorry.",
