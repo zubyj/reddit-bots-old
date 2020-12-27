@@ -13,6 +13,6 @@ def get_best_match(phrase, lines):
             bestQuote = line["response"]["line"]
     obj = {
         "text":bestQuote,
-        "ratio":highestRatio
+        "ratio":highestRatio,
     }
     return obj
