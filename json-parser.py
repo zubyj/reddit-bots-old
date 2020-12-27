@@ -13,7 +13,6 @@ with open('office-script.json') as f:
 with open('line-replies2.json') as f2:
     data2 = json.load(f2)
 
-counter = 0
 for line in data:
     text = line["line_text"]
     speaker = line["speaker"]
@@ -35,36 +34,6 @@ for line in data:
             temp = data2["lines"]
             temp.append(obj)
             write_json(data2)
-           # print(prevSpeaker + " : " + prevText)
-           # print(speaker + " : " + text)
-            counter+=1
-
-print(counter)
-            
-
-# counter = 0
-# for line in data:
-#     if line["speaker"] == "Dwight"
-#         id = line["id"]
-#         id = int(id)-2
-#         speaker = data[id]["speaker"]
-#         response = line["quote"]
-#         if speaker != "Dwight" and isinstance+(response, str)
-#         if data[id]["speaker"] != "Dwight" and data[id]["quote"]
-#             quote = data[id]["line_text"]
-#             response = (line["line_text"])
-#             if (len(response) > 10 and len(quote) > 10):
-#                 print(response)
-#                 counter+=1
-#             obj = {
-#                 "quote":quote,
-#                 "response":response
-#             }
-
-#                 #temp = data2["lines"]
-#                 #temp.append(obj)
-
-#            # write_json(data2)
 
 
         
