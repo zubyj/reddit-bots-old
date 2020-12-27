@@ -22,7 +22,7 @@ for comment in subreddit.stream.comments():
             "comment":comment.body,
             "reply":obj["text"],
             "ratio":obj["ratio"],
-            "time":datetime.now().time()
+            "time":datetime.now().strftime("%d/%m/%Y %H:%M:%S")
         }
         with open('comment_log.json') as f2:
             logs = json.load(f2)
