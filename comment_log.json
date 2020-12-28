@@ -4,7 +4,8 @@
             "comment": "test comment",
             "reply": "test reply",
             "rank": "0",
-            "time": "0"
+            "time": "0",
+            "comment_id": "0"
         }
     ]
 }
