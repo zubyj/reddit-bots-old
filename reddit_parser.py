@@ -3,20 +3,35 @@ import json
 from word_matcher import get_best_match
 from datetime import datetime
 
-def log_comment(filename, data):
-    with open(filename, 'w') as f:
-        logs = json.load(f)
-
+# Checks if bot already replied to comment
 def is_logged(filename, comment_id):
     with open(filename) as f:
-        logs = json.load(f)
-        # Gets logs object
-        logs = logs["logs"]
-        for log in logs:
-            if (log["comment_id"] == comment_id):
-                return True
-        return False
+        data = json.load(f)
+    logs = data["logs"]
+    for log in logs:
+        if log["comment_id"] == comment_id:
+            return True
+    return False
 
+# Creates a formatted log from comment and reply
+def create_log(data, comment):
+    return {
+        "comment":comment.body,
+        "reply":data["text"],
+        "ratio":data["ratio"],
+        "time":datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+        "comment_id":comment.id
+    }
+
+# Creates a log and updates json file specified.
+def log_comment(filename, data, comment):
+    with open(filename) as f:
+        logs = json.load(f)
+    temp = logs["logs"]
+    obj = create_log(data, comment)
+    temp.append(obj)
+    with open(filename, 'w') as f:
+        json.dump(logs, f, indent=4)
 
 reddit = praw.Reddit("dwight-schrute-bot")
 subreddit = reddit.subreddit("DunderMifflin")
@@ -25,21 +40,9 @@ with open('line-replies2.json') as f:
     data = json.load(f)
 lines = data["lines"]
 
-
 for comment in subreddit.stream.comments():
     obj = get_best_match(comment.body, lines)
     if obj["ratio"] > 70 and not is_logged('comment_log.json', comment.id):
-        obj2 = {
-            "comment":comment.body,
-            "reply":obj["text"],
-            "ratio":obj["ratio"],
-            "time":datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
-            "comment_id":comment.id
-        }
-        with open('comment_log.json') as f2:
-            logs = json.load(f2)
-            temp = logs["logs"]
-            temp.append(obj2)
-        with open('comment_log.json', 'w') as f3:
-            json.dump(logs, f3, indent=4)
-        print(obj2)
+        log_comment('comment_log.json', obj, comment)
+    elif obj["ratio"] > 60 and not is_logged('rejected_log.json', comment.id):
+        log_comment('rejected_log.json', obj, comment)
