@@ -3562,14 +3562,6 @@
         },
         {
             "character": "Michael",
-            "line": "That's exactly what I was thinking.",
-            "response": {
-                "character": "Dwight",
-                "line": "Question? May I investigate?"
-            }
-        },
-        {
-            "character": "Michael",
             "line": "[singing] Can you hear me, they talk about us...",
             "response": {
                 "character": "Dwight",
