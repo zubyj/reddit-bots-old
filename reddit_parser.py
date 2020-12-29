@@ -40,6 +40,8 @@ with open('line-replies2.json') as f:
     data = json.load(f)
 lines = data["lines"]
 
+# Accepts comments with > 70 ratio
+# 
 min_ratio = 70
 min_bad_ratio = 55
 
