@@ -41,10 +41,10 @@ with open('line-replies2.json') as f:
 lines = data["lines"]
 
 for comment in subreddit.stream.comments():
-    if (comment.author != "dwight-schrute-bot"):
+    if (comment.author != "dwight-schrute-bot" and len(comment.body) > 20):
         obj = get_best_match(comment.body, lines)
-        if obj["ratio"] > 70 and not is_logged('comment_log.json', comment.id):
+        if obj["ratio"] > 60 and not is_logged('comment_log.json', comment.id):
             log_comment('comment_log.json', obj, comment)
             comment.reply(obj["text"])
-        elif obj["ratio"] > 60 and not is_logged('rejected_log.json', comment.id):
+        elif obj["ratio"] > 50 and not is_logged('rejected_log.json', comment.id):
             log_comment('rejected_log.json', obj, comment)
