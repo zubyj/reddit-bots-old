@@ -46,5 +46,5 @@ for comment in subreddit.stream.comments():
         if obj["ratio"] > 66 and not is_logged('comment_log.json', comment.id):
             log_comment('comment_log.json', obj, comment)
             comment.reply(obj["text"])
-        elif obj["ratio"] < 66 and not is_logged('rejected_log.json', comment.id):
+        elif obj["ratio"] > 55 and not is_logged('rejected_log.json', comment.id):
             log_comment('rejected_log.json', obj, comment)
