@@ -10,11 +10,11 @@ for line in lines:
     theLine = line["line"]["text"]
     response = line["response"]["text"]
 
-
     min = 30
-    if '[' in theLine and len(theLine) < min:
+    if '[' in theLine:
+        line["line"]["text"] = "test"
         counter+=1
         print(theLine)
         print()
-
+        
 print(counter)

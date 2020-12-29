@@ -19,10 +19,9 @@ def get_line_obj(line):
         "text":line["line_text"]
     }
 
-# Extracts every response from given "The Office" character. 
-# Also extracts the line that the character is responding to.
-# The output is placed in given json file as line, response pairs.
-# char_name must be the character's first name.
+# Gets every response from given "The Office character"
+# Also, gets every line and character and triggered the response. 
+# The lines & responses stored in given json file. 
 def get_lines(char_name, out_file):
     with open('office-script.json') as f:
         data = json.load(f)
@@ -52,4 +51,8 @@ def get_lines(char_name, out_file):
                 with open(out_file, 'w') as f:
                     json.dump(out_data, f, indent=4)
 
+# Gets all lines from the character, "Dwight Schrute"
 get_lines('Dwight', 'dwight_replies.json')
+
+# Gets all lines from the character, "Michael Scott"
+# get_lines('Michael', 'michael_replies.json')
