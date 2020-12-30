@@ -40,17 +40,23 @@ def log_comment(filename, data, comment):
 def get_best_match(phrase, lines):
     highestRatio = 0
     bestQuote = ""
+    season = ""
+    episode = ""
     for line in lines:
         text = line["line"]
+
         ratio = fuzz.ratio(phrase, text)
         if ratio > highestRatio:
             highestRatio = ratio
             bestQuote = line["response"]["text"]
+            season = line["season"]
+            episode = line["episode"]
+
     obj = {
         "text":bestQuote,
         "ratio":highestRatio,
-        "season":line["season"],
-        "episode":line["episode"]
+        "season":season,
+        "episode":episode
     }
     return obj
 
@@ -65,7 +71,7 @@ def run_bot(bot_name, lines_file, subreddit="DunderMifflin"):
         data = json.load(f)
     lines = data["lines"]
     min_ratio = 55
-    min_rej_ratio = 50
+    min_rej_ratio = 47
     for comment in subreddit.stream.comments():
         if (comment.author != bot_name and len(comment.body) > 20):
             obj = get_best_match(comment.body, lines)
