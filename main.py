@@ -63,26 +63,27 @@ def run_bot(bot_name, lines_file, subreddit="DunderMifflin"):
     with open(lines_file) as f:
         data = json.load(f)
     lines = data["lines"]
-    min_ratio = 70
-    min_rej_ratio = 55
+    min_ratio = 50
+    min_rej_ratio = 45
     for comment in subreddit.stream.comments():
         if (comment.author != bot_name and len(comment.body) > 20):
             obj = get_best_match(comment.body, lines)
-            print(obj)
-            if obj["ratio"] > min_ratio and not is_logged('comment_log.json', comment.id):
+            print()
+            print(obj["ratio"])
+            if obj["ratio"] >= min_ratio and not is_logged('comment_log.json', comment.id):
                 log_comment('comment_log.json', obj, comment)
                 comment.reply(obj["text"])
                 print("Comment : " + comment.body)
                 print("Response : " + obj["text"])
                 print()
-            elif obj["ratio"] > min_rej_ratio and not is_logged('rejected_log.json', comment.id):
+            elif obj["ratio"] >= min_rej_ratio and not is_logged('rejected_log.json', comment.id):
                 log_comment('rejected_log.json', obj, comment)
                 print("Comment : " + comment.body)
                 print("Response : " + obj["text"])
                 print()
 
 if __name__ == "__main__":
-    run_bot('dwight-schrute-bot', 'dwight-replies2.json')
+    run_bot('dwight-schrute-bot', 'dwight-replies3.json')
 
 
 
