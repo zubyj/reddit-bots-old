@@ -70,8 +70,8 @@ def run_bot(bot_name, lines_file, subreddit="DunderMifflin"):
     with open(lines_file) as f:
         data = json.load(f)
     lines = data["lines"]
-    min_ratio = 55
-    min_rej_ratio = 47
+    min_ratio = 48
+    min_rej_ratio = 40
     for comment in subreddit.stream.comments():
         if (comment.author != bot_name and len(comment.body) > 20):
             obj = get_best_match(comment.body, lines)
