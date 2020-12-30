@@ -53,31 +53,36 @@ def get_best_match(phrase, lines):
     }
     return obj
 
-def run_bot(bot_name, subreddit="DunderMifflin"):
+# Checks stream of new comments and replies to 
+# comments that match the minimum ratio (min_ratio) specified.
+def run_bot(bot_name, lines_file, subreddit="DunderMifflin"):
+    # Create instance of reddit account
     reddit = praw.Reddit(bot_name)
     subreddit = reddit.subreddit("DunderMifflin")
-    with open('dwight_replies2.json') as f:
+    # Open file of character's lines.
+    with open(lines_file) as f:
         data = json.load(f)
     lines = data["lines"]
     min_ratio = 70
-    min_bad_ratio = 55
+    min_rej_ratio = 55
     for comment in subreddit.stream.comments():
         if (comment.author != bot_name and len(comment.body) > 20):
             obj = get_best_match(comment.body, lines)
+            print(obj)
             if obj["ratio"] > min_ratio and not is_logged('comment_log.json', comment.id):
                 log_comment('comment_log.json', obj, comment)
                 comment.reply(obj["text"])
                 print("Comment : " + comment.body)
                 print("Response : " + obj["text"])
                 print()
-            elif obj["ratio"] > min_bad_ratio and not is_logged('rejected_log.json', comment.id):
+            elif obj["ratio"] > min_rej_ratio and not is_logged('rejected_log.json', comment.id):
                 log_comment('rejected_log.json', obj, comment)
                 print("Comment : " + comment.body)
                 print("Response : " + obj["text"])
                 print()
 
 if __name__ == "__main__":
-    run_bot('dwight-schrute-bot')
+    run_bot('dwight-schrute-bot', 'dwight-replies2.json')
 
 
 
