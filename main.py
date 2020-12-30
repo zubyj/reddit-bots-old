@@ -81,7 +81,6 @@ def run_bot(bot_name, lines_file, subreddit="DunderMifflin"):
                 time.sleep(60)
             elif obj["ratio"] >= min_rej_ratio and not is_logged('rejected_log.json', comment.id):
                 log_comment('rejected_log.json', obj, comment)
-                time.sleep(60)
 
 if __name__ == "__main__":
     run_bot('dwight-schrute-bot', 'dwight-replies3.json')
