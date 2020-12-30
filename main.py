@@ -70,15 +70,15 @@ def run_bot(bot_name, lines_file, subreddit="DunderMifflin"):
     with open(lines_file) as f:
         data = json.load(f)
     lines = data["lines"]
-    min_ratio = 48
-    min_rej_ratio = 45
+    min_ratio = 55
+    min_rej_ratio = 48
     for comment in subreddit.stream.comments():
         if (comment.author != bot_name and len(comment.body) > 20):
             obj = get_best_match(comment.body, lines)
             if obj["ratio"] >= min_ratio and not is_logged('comment_log.json', comment.id):
                 log_comment('comment_log.json', obj, comment)
                 comment.reply(obj["text"])
-                time.sleep(120)
+                time.sleep(180)
             elif obj["ratio"] >= min_rej_ratio and not is_logged('rejected_log.json', comment.id):
                 log_comment('rejected_log.json', obj, comment)
 
