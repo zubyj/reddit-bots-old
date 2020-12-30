@@ -62,13 +62,19 @@ def run_bot(bot_name, subreddit="DunderMifflin"):
     min_ratio = 70
     min_bad_ratio = 55
     for comment in subreddit.stream.comments():
-        if (comment.author != "dwight-schrute-bot" and len(comment.body) > 20):
+        if (comment.author != bot_name and len(comment.body) > 20):
             obj = get_best_match(comment.body, lines)
             if obj["ratio"] > min_ratio and not is_logged('comment_log.json', comment.id):
                 log_comment('comment_log.json', obj, comment)
                 comment.reply(obj["text"])
+                print("Comment : " + comment.body)
+                print("Response : " + obj["text"])
+                print()
             elif obj["ratio"] > min_bad_ratio and not is_logged('rejected_log.json', comment.id):
                 log_comment('rejected_log.json', obj, comment)
+                print("Comment : " + comment.body)
+                print("Response : " + obj["text"])
+                print()
 
 if __name__ == "__main__":
     run_bot('dwight-schrute-bot')
