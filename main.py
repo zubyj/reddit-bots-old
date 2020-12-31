@@ -98,7 +98,7 @@ def run_bot(bot_name, lines_file, subreddit="DunderMifflin"):
     # Every match returns a ratio.
     # If the min_ratio is over specified value, the bot will reply to the comment.
     min_ratio = 55
-    min_rej_ratio = 45
+    min_rej_ratio = 48
 
     for comment in subreddit.stream.comments():
         if (comment.author != bot_name and len(comment.body) >= 20):
@@ -115,7 +115,7 @@ def run_bot(bot_name, lines_file, subreddit="DunderMifflin"):
                     show_bot_output(comment.body, obj)
 
             elif ratio >= min_rej_ratio and not is_logged('rejected_log.json', comment.id):
-                #log_comment('rejected_log.json', obj, comment)
+                log_comment('rejected_log.json', obj, comment)
                 print("REJECTED")
                 show_bot_output(comment.body, obj)
 
