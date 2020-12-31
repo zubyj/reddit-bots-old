@@ -11591,7 +11591,7 @@
                 "character": "Dwight",
                 "text": "So, do you know what you're gonna say when he shows up?"
             },
-            "reply_count": 0,
+            "reply_count": 5,
             "accepted_ratio": 100,
             "id": 773
         },
@@ -19586,7 +19586,7 @@
                 "character": "Dwight",
                 "text": "Jim, how dare you. "
             },
-            "reply_count": 0,
+            "reply_count": 1,
             "accepted_ratio": 100,
             "id": 1306
         },
@@ -24656,7 +24656,7 @@
                 "character": "Dwight",
                 "text": "What's the procedure, everyone? What's the procedure?"
             },
-            "reply_count": 0,
+            "reply_count": 1,
             "accepted_ratio": 100,
             "id": 1644
         },
@@ -48461,7 +48461,7 @@
                 "character": "Dwight",
                 "text": "I'm sorry to spoil Jim's fantastic voyage everyone, but we're almost out of gas."
             },
-            "reply_count": 0,
+            "reply_count": 1,
             "accepted_ratio": 100,
             "id": 3231
         },
