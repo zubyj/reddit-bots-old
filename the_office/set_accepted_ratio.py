@@ -4,8 +4,8 @@ with open('dwight-replies5.json') as f:
     data = json.load(f)
 
 lines = data["lines"]
-id = input("Enter the line's ID to modify accepted ratio: ")
-ratio = input("Enter the minimum ratio accepted to reply to the comment: ")
+id = input("Enter the line's ID to modify: ")
+ratio = input("Enter the minimum ratio accepted to trigger reply: ")
 
 for line in lines:
     if (line["id"]) == int(id):

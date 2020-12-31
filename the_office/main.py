@@ -2,9 +2,8 @@ import praw
 import json
 from fuzzywuzzy import fuzz
 from datetime import datetime
-import time
 
-# Checks if bot already replied to comment
+# Checks comment logs so bot doesn't reply to same comment.
 def is_logged(filename, comment_id):
     with open(filename) as f:
         data = json.load(f)
@@ -35,7 +34,7 @@ def log_comment(filename, data, comment):
         json.dump(logs, f, indent=4)
 
 # Function is called when bot replies to a comment.
-# Increments reply_count object of line used.
+# Increments the reply_count of line from given id.
 def increm_reply_count(filename, id):
     with open(filename) as f:
         data = json.load(f)
@@ -51,6 +50,7 @@ def increm_reply_count(filename, id):
                 return
 
 # Given a reddit comment, returns the most identical line
+#   that the character has responded to.
 def get_best_match(comment, lines):
     highestRatio = 0
     bestLine = lines[0]
@@ -70,16 +70,17 @@ def get_best_match(comment, lines):
         "id":bestLine["id"]
     }
 
-# Checks comments by the unique_factor value.
-# Ex. if unique_factor is 5, past 5 comments must be unique.
+# Makes sure every few comments are unique.
+# Ex. if unique_factor is set to 5, past 5 comments must be unique.
 def is_unique_comment(filename, line_id):
     unique_factor = 5
 
     with open(filename) as f:
         data = json.load(f)
     logs = data["logs"]
+    
     length = len(logs)
-    index = length-5
+    index = len(logs)
     for i in range(index, length):
         if line_id == logs[i]["line_id"]:
             return False
@@ -111,22 +112,26 @@ def run_bot(bot_name, lines_file, subreddit="DunderMifflin"):
     # If the min_ratio is over specified value, the bot will reply to the comment.
     min_ratio = 55
     min_rej_ratio = 48
-    
 
     for comment in subreddit.stream.comments():
         if (comment.author != bot_name and len(comment.body) >= 20):
             obj = get_best_match(comment.body, lines)
             ratio = obj["ratio"]
+            # Custom accepted_ratio set by moderator. Default is 100.
             accepted_ratio = int(obj["accepted_ratio"])
+
+            # If ratio meets minimum or accepted ratio, log comment & reply 
+            # Also increments reply_count object in used line.
             if ratio >= min_ratio or ratio >= accepted_ratio:
                 log = 'comment_log.json'
                 if not is_logged(log, comment.id) and is_unique_comment(log, obj["line_id"]):
-                    log_comment('comment_log.json', obj, comment)
+                    log_comment(log, obj, comment)
                     comment.reply(obj["text"])
                     print("ACCEPTED")
                     increm_reply_count(lines_file, obj["id"])
                     show_bot_output(comment.body, obj)
 
+            # Instead, if ratio meets another minimum, log it as a rejected comment.
             elif ratio >= min_rej_ratio and not is_logged('rejected_log.json', comment.id):
                 log_comment('rejected_log.json', obj, comment)
                 print("REJECTED")
