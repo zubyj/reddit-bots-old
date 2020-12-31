@@ -14,9 +14,12 @@ def is_logged(filename, comment_id):
             return True
     return False
 
-# Creates formatted log.
-def create_log(data, comment):
-    return {
+# Writes the reddit comment and bots response to given file.
+def log_comment(filename, data, comment):
+    with open(filename) as f:
+        logs = json.load(f)
+    temp = logs["logs"]
+    obj = {
         "comment":comment.body,
         "reply":data["text"],
         "ratio":data["ratio"],
@@ -27,19 +30,12 @@ def create_log(data, comment):
         "comment_id":comment.id,
         "line_id":data["id"]
     }
-
-# Writes the reddit comment and bots response to given file.
-def log_comment(filename, data, comment):
-    with open(filename) as f:
-        logs = json.load(f)
-    temp = logs["logs"]
-    obj = create_log(data, comment)
     temp.append(obj)
     with open(filename, 'w') as f:
         json.dump(logs, f, indent=4)
 
-# Gets line from given id and increments count.
 # Function is called when bot replies to a comment.
+# Increments reply_count object of line used.
 def increm_reply_count(filename, id):
     with open(filename) as f:
         data = json.load(f)
@@ -55,11 +51,12 @@ def increm_reply_count(filename, id):
                 return
 
 # Given a reddit comment, returns the most identical line
-def get_best_match(phrase, lines):
+def get_best_match(comment, lines):
     highestRatio = 0
+    bestLine = lines[0]
     for line in lines:
         text = line["line"]
-        ratio = fuzz.ratio(phrase, text)
+        ratio = fuzz.ratio(comment, text)
         if ratio >= highestRatio:
             bestLine = line
             highestRatio = ratio
@@ -72,6 +69,21 @@ def get_best_match(phrase, lines):
         "accepted_ratio":bestLine["accepted_ratio"],
         "id":bestLine["id"]
     }
+
+# Checks comments by the unique_factor value.
+# Ex. if unique_factor is 5, past 5 comments must be unique.
+def is_unique_comment(filename, line_id):
+    unique_factor = 5
+
+    with open(filename) as f:
+        data = json.load(f)
+    logs = data["logs"]
+    length = len(logs)
+    index = length-5
+    for i in range(index, length):
+        if line_id == logs[i]["line_id"]:
+            return False
+    return True
 
 def show_bot_output(comment, obj):
     print(comment)
@@ -99,15 +111,16 @@ def run_bot(bot_name, lines_file, subreddit="DunderMifflin"):
     # If the min_ratio is over specified value, the bot will reply to the comment.
     min_ratio = 55
     min_rej_ratio = 48
+    
 
     for comment in subreddit.stream.comments():
         if (comment.author != bot_name and len(comment.body) >= 20):
             obj = get_best_match(comment.body, lines)
             ratio = obj["ratio"]
             accepted_ratio = int(obj["accepted_ratio"])
-
             if ratio >= min_ratio or ratio >= accepted_ratio:
-                if not is_logged('comment_log.json', comment.id):
+                log = 'comment_log.json'
+                if not is_logged(log, comment.id) and is_unique_comment(log, obj["line_id"]):
                     log_comment('comment_log.json', obj, comment)
                     comment.reply(obj["text"])
                     print("ACCEPTED")
