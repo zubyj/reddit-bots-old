@@ -83,7 +83,7 @@ def run_bot(bot_name, lines_file, subreddit="DunderMifflin"):
                 log_comment('rejected_log.json', obj, comment)
 
 if __name__ == "__main__":
-    run_bot('dwight-schrute-bot', 'dwight-replies3.json')
+    run_bot('dwight-schrute-bot', 'dwight-replies4.json')
 
 
 
