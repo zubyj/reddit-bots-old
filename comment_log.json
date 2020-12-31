@@ -96,6 +96,17 @@
             "episode": 10,
             "comment_id": "ghmn1ts",
             "line_id": 1306
+        },
+        {
+            "comment": "Say what you want about 2020, but it would never do that",
+            "reply": "So, do you know what you're gonna say when he shows up?",
+            "ratio": 61,
+            "accepted_ratio": 100,
+            "time": "31/12/2020 12:58:51",
+            "season": 3,
+            "episode": 7,
+            "comment_id": "ghn3l5o",
+            "line_id": 773
         }
     ]
 }

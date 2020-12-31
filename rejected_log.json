@@ -151,6 +151,28 @@
             "episode": 23,
             "comment_id": "ghn1n1q",
             "line_id": 3146
+        },
+        {
+            "comment": "Ah shoot, well I guess we'll take them back then.",
+            "reply": "Yes! There you go. I want the teapot. Gracias.",
+            "ratio": 51,
+            "accepted_ratio": 100,
+            "time": "31/12/2020 13:55:09",
+            "season": 2,
+            "episode": 10,
+            "comment_id": "ghn9nqm",
+            "line_id": 396
+        },
+        {
+            "comment": "Lol. That would mean absolutely nothing to Staples",
+            "reply": "Michael, can you explain?",
+            "ratio": 50,
+            "accepted_ratio": 100,
+            "time": "31/12/2020 14:07:36",
+            "season": 2,
+            "episode": 17,
+            "comment_id": "ghnazfx",
+            "line_id": 518
         }
     ]
 }
