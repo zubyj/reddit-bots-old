@@ -110,9 +110,9 @@ def run_bot(bot_name, lines_file, subreddit="DunderMifflin"):
     #
     # Every match returns a ratio.
     # If the min_ratio is over specified value, the bot will reply to the comment.
-    min_ratio = 55
-    min_rej_ratio = 48
-
+    min_ratio = 50
+    min_rej_ratio = 45
+    
     for comment in subreddit.stream.comments():
         if (comment.author != bot_name and len(comment.body) >= 20):
             obj = get_best_match(comment.body, lines)
