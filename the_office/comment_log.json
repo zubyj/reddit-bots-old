@@ -107,6 +107,28 @@
             "episode": 7,
             "comment_id": "ghn3l5o",
             "line_id": 773
+        },
+        {
+            "comment": "Search Bar- What are you doing?",
+            "reply": "I'm gonna activate the seismic failsafe. We'll be stuck between floors for hours.  Oh.  My pants fell down.",
+            "ratio": 61,
+            "accepted_ratio": 100,
+            "time": "31/12/2020 18:31:05",
+            "season": 8,
+            "episode": 23,
+            "comment_id": "gho1qor",
+            "line_id": 3148
+        },
+        {
+            "comment": "What is the difference between a salesman and a saleswoman?",
+            "reply": "Saleswoman has a vagina.",
+            "ratio": 66,
+            "accepted_ratio": 100,
+            "time": "31/12/2020 18:33:05",
+            "season": 2,
+            "episode": 17,
+            "comment_id": "gho1xz8",
+            "line_id": 513
         }
     ]
 }
