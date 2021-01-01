@@ -56,7 +56,7 @@ def get_best_match(comment, lines):
     bestLine = lines[0]
     for line in lines:
         text = line["line"]
-        ratio = fuzz.ratio(comment, text)
+        ratio = fuzz.token_set_ratio(comment, text)
         if ratio >= highestRatio:
             bestLine = line
             highestRatio = ratio
@@ -111,29 +111,32 @@ def run_bot(bot_name, lines_file, subreddit="DunderMifflin"):
     # Every match returns a ratio.
     # If the min_ratio is over specified value, the bot will reply to the comment.
     min_ratio = 50
-    min_rej_ratio = 45
-    
+    min_rej_ratio = 47
+
     for comment in subreddit.stream.comments():
         if (comment.author != bot_name and len(comment.body) >= 20):
             obj = get_best_match(comment.body, lines)
             ratio = obj["ratio"]
             # Custom accepted_ratio set by moderator. Default is 100.
             accepted_ratio = int(obj["accepted_ratio"])
-
+            print(comment.body)
+            print(obj["text"])
+            print(obj["ratio"])
+            print()
             # If ratio meets set minimum or accepted ratio, log comment & reply 
             # Also increments reply_count object in used line.
             if ratio >= min_ratio or ratio >= accepted_ratio:
                 log = 'comment_log.json'
                 if not is_logged(log, comment.id) and is_unique_comment(log, obj["id"]):
-                    log_comment(log, obj, comment)
-                    comment.reply(obj["text"])
+                    #log_comment(log, obj, comment)
+                    #comment.reply(obj["text"])
                     print("ACCEPTED")
-                    increm_reply_count(lines_file, obj["id"])
+                    #increm_reply_count(lines_file, obj["id"])
                     show_bot_output(comment.body, obj)
 
             # If ratio meets another set minimum, log it as a rejected comment.
             elif ratio >= min_rej_ratio and not is_logged('rejected_log.json', comment.id):
-                log_comment('rejected_log.json', obj, comment)
+                #log_comment('rejected_log.json', obj, comment)
                 print("REJECTED")
                 show_bot_output(comment.body, obj)
 
