@@ -56,7 +56,7 @@ def get_best_match(comment, lines):
     bestLine = lines[0]
     for line in lines:
         text = line["line"]
-        ratio = fuzz.token_set_ratio(comment, text)
+        ratio = fuzz.ratio(comment, text)
         if ratio >= highestRatio:
             bestLine = line
             highestRatio = ratio
@@ -111,7 +111,7 @@ def run_bot(bot_name, lines_file, subreddit="DunderMifflin"):
     # Every match returns a ratio.
     # If the min_ratio is over specified value, the bot will reply to the comment.
     min_ratio = 50
-    min_rej_ratio = 47
+    min_rej_ratio = 45
 
     for comment in subreddit.stream.comments():
         if (comment.author != bot_name and len(comment.body) >= 20):
