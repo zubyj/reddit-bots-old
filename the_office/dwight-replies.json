@@ -1136,7 +1136,7 @@
                 "character": "Dwight",
                 "text": "Oh, um... Jan wants you to call her."
             },
-            "reply_count": 0,
+            "reply_count": 2,
             "accepted_ratio": 100,
             "id": 76
         },
@@ -17021,7 +17021,7 @@
                 "character": "Dwight",
                 "text": "Question: Has anyone recently offended a Gypsy?"
             },
-            "reply_count": 0,
+            "reply_count": 1,
             "accepted_ratio": 100,
             "id": 1135
         },
@@ -27026,7 +27026,7 @@
                 "character": "Dwight",
                 "text": "And I knew that you would do that. The meatball parm is their worst sandwich!"
             },
-            "reply_count": 0,
+            "reply_count": 1,
             "accepted_ratio": 100,
             "id": 1802
         },
@@ -31062,7 +31062,7 @@
                 "text": "Dwight Schrute, Scranton branch. I just want to say that I have been standing in this line all day and if this line is any indication of how this company is being run then we are in big trouble.  Thank you. Right. I know. And I just want to say that I believe that there are options out there.  A take a number option like they have in a deli. What about line varieties? Like an express line for quick comments of ten words or less. They can move much more efficiently. What about ropes along the lines that you can hold on to."
             },
             "reply_count": 0,
-            "accepted_ratio": 100,
+            "accepted_ratio": "45",
             "id": 2071
         },
         {
@@ -42491,7 +42491,7 @@
                 "character": "Dwight",
                 "text": "Obese people in my office are a drain on resources. Chairs wear out faster, it takes more Freon to keep them cool, they flush the toilets more often, plus their massive BMs bust the rivets on my pipes. But a gym turns fat into cash."
             },
-            "reply_count": 0,
+            "reply_count": 1,
             "accepted_ratio": 100,
             "id": 2833
         },
@@ -42911,7 +42911,7 @@
                 "character": "Dwight",
                 "text": "Enough of this garbage.  This is Christmas.  Hi-yah!!!!!  Yeah!!!! Christmas!!!!"
             },
-            "reply_count": 0,
+            "reply_count": 1,
             "accepted_ratio": 100,
             "id": 2861
         },
@@ -47471,7 +47471,7 @@
                 "character": "Dwight",
                 "text": "How was my summer? It was pretty mixed. I invented a new power drink made out of beet runoff. Mmm, mmm! So that's really good. But I got some disappointing medical news."
             },
-            "reply_count": 0,
+            "reply_count": 1,
             "accepted_ratio": 100,
             "id": 3165
         },
@@ -47891,7 +47891,7 @@
                 "character": "Dwight",
                 "text": " Gimme that."
             },
-            "reply_count": 0,
+            "reply_count": 1,
             "accepted_ratio": 100,
             "id": 3193
         },
@@ -52706,7 +52706,7 @@
                 "character": "Dwight",
                 "text": "I'm not gonna say it."
             },
-            "reply_count": 0,
+            "reply_count": 1,
             "accepted_ratio": 100,
             "id": 3514
         },
@@ -53651,7 +53651,7 @@
                 "character": "Dwight",
                 "text": "Security deposit. That's been-"
             },
-            "reply_count": 0,
+            "reply_count": 2,
             "accepted_ratio": 100,
             "id": 3577
         },

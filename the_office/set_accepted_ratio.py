@@ -1,6 +1,8 @@
 import json
 
-with open('dwight-replies5.json') as f:
+filename = 'dwight-replies.json'
+
+with open(filename) as f:
     data = json.load(f)
 
 lines = data["lines"]
@@ -11,5 +13,5 @@ for line in lines:
     if (line["id"]) == int(id):
         line["accepted_ratio"] = ratio
 
-with open('dwight-replies5.json', 'w') as f:
+with open (filename, 'w') as f:
     json.dump(data, f, indent=4)
