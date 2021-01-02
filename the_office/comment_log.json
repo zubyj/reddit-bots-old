@@ -294,6 +294,116 @@
             "episode": 1,
             "comment_id": "ghsffnh",
             "line_id": 3165
+        },
+        {
+            "comment": "You are a gentleman and a scholar.",
+            "reply": "Dwight Schrute, Scranton branch. I just want to say that I have been standing in this line all day and if this line is any indication of how this company is being run then we are in big trouble.  Thank you. Right. I know. And I just want to say that I believe that there are options out there.  A take a number option like they have in a deli. What about line varieties? Like an express line for quick comments of ten words or less. They can move much more efficiently. What about ropes along the lines that you can hold on to.",
+            "ratio": 46,
+            "accepted_ratio": "45",
+            "time": "01/01/2021 19:34:45",
+            "season": 6,
+            "episode": 10,
+            "comment_id": "ghsifyw",
+            "line_id": 2071
+        },
+        {
+            "comment": "\u201cWell, then you have to call me by my name.\u201d \n\u201cGabriel Susan Lewis.\u201d",
+            "reply": "I gotta be gone for a few minutes. You make sure that Packer does NOT sleep with Nellie.",
+            "ratio": 77,
+            "accepted_ratio": 100,
+            "time": "01/01/2021 19:57:01",
+            "season": 8,
+            "episode": 16,
+            "comment_id": "ghsm1wb",
+            "line_id": 3018
+        },
+        {
+            "comment": "Hey, cats, we've got a jam session scheduled for mods 6, 9, and 12",
+            "reply": " There are over four hundred of these! ",
+            "ratio": 53,
+            "accepted_ratio": 100,
+            "time": "01/01/2021 21:01:45",
+            "season": 7,
+            "episode": 17,
+            "comment_id": "ghssoi1",
+            "line_id": 2544
+        },
+        {
+            "comment": "Dang that's a good idea.",
+            "reply": "Mine are at home in a display case above my bed.",
+            "ratio": 51,
+            "accepted_ratio": 100,
+            "time": "01/01/2021 21:20:34",
+            "season": 2,
+            "episode": 1,
+            "comment_id": "ghsuf5u",
+            "line_id": 162
+        },
+        {
+            "comment": "I don\u2019t even know what that is lol",
+            "reply": "No woman would ever want a man who doesn't know what an auger is.",
+            "ratio": 50,
+            "accepted_ratio": 100,
+            "time": "01/01/2021 21:48:54",
+            "season": 9,
+            "episode": 18,
+            "comment_id": "ghswvn3",
+            "line_id": 3580
+        },
+        {
+            "comment": "I don't have to buy it. I just want to taste it.\n\nOn a side note thanks for the info! I had no idea it was that cheap on iTunes right now.",
+            "reply": "Oh, look at this, she saved you two thousand dollars 'cause they failed to report a mold problem.  But wouldn't that affect the final... How did she? Oh, oh, I see what she did. That is good. Wow. Carol is one smart cookie.",
+            "ratio": 51,
+            "accepted_ratio": 100,
+            "time": "01/01/2021 23:36:36",
+            "season": 3,
+            "episode": 10,
+            "comment_id": "ght4qoy",
+            "line_id": 842
+        },
+        {
+            "comment": "All of them. I loved every single one of em",
+            "reply": "What about when Jan said the branch was closing?",
+            "ratio": 53,
+            "accepted_ratio": 100,
+            "time": "01/01/2021 23:58:18",
+            "season": 3,
+            "episode": 7,
+            "comment_id": "ght638o",
+            "line_id": 785
+        },
+        {
+            "comment": "Nice.  What kind of pets do you have?",
+            "reply": "Surprise me. No! Pepperoni.",
+            "ratio": 50,
+            "accepted_ratio": 100,
+            "time": "02/01/2021 01:42:19",
+            "season": 7,
+            "episode": 8,
+            "comment_id": "ghtc30s",
+            "line_id": 2419
+        },
+        {
+            "comment": "Not even an exclamation point?",
+            "reply": "This is more professional. It's not like she discovered a cure for cancer.",
+            "ratio": 65,
+            "accepted_ratio": 100,
+            "time": "02/01/2021 02:21:43",
+            "season": 5,
+            "episode": 14,
+            "comment_id": "ghte9yb",
+            "line_id": 1679
+        },
+        {
+            "comment": "Honestly this is something I would do\ud83d\ude02",
+            "reply": "  Michael. I can't believe you came.",
+            "ratio": 50,
+            "accepted_ratio": 100,
+            "time": "02/01/2021 02:24:45",
+            "season": 9,
+            "episode": 23,
+            "comment_id": "ghtee1w",
+            "line_id": 3737
         }
     ]
 }
