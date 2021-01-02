@@ -2,6 +2,7 @@ import praw
 import json
 from fuzzywuzzy import fuzz
 from datetime import datetime
+import time
 
 # Checks comment logs so bot doesn't reply to same comment.
 def is_logged(filename, comment_id):
@@ -119,10 +120,7 @@ def run_bot(bot_name, lines_file, subreddit="DunderMifflin"):
             ratio = obj["ratio"]
             # Custom accepted_ratio set by moderator. Default is 100.
             accepted_ratio = int(obj["accepted_ratio"])
-            print(comment.body)
-            print(obj["text"])
-            print(obj["ratio"])
-            print()
+
             # If ratio meets set minimum or accepted ratio, log comment & reply 
             # Also increments reply_count object in used line.
             if ratio >= min_ratio or ratio >= accepted_ratio:
@@ -133,6 +131,7 @@ def run_bot(bot_name, lines_file, subreddit="DunderMifflin"):
                     print("ACCEPTED")
                     increm_reply_count(lines_file, obj["id"])
                     show_bot_output(comment.body, obj)
+                    time.sleep(180)
 
             # If ratio meets another set minimum, log it as a rejected comment.
             elif ratio >= min_rej_ratio and not is_logged('rejected_log.json', comment.id):
