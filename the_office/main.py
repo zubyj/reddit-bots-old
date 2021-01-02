@@ -128,15 +128,15 @@ def run_bot(bot_name, lines_file, subreddit="DunderMifflin"):
             if ratio >= min_ratio or ratio >= accepted_ratio:
                 log = 'comment_log.json'
                 if not is_logged(log, comment.id) and is_unique_comment(log, obj["id"]):
-                    #log_comment(log, obj, comment)
-                    #comment.reply(obj["text"])
+                    log_comment(log, obj, comment)
+                    comment.reply(obj["text"])
                     print("ACCEPTED")
-                    #increm_reply_count(lines_file, obj["id"])
+                    increm_reply_count(lines_file, obj["id"])
                     show_bot_output(comment.body, obj)
 
             # If ratio meets another set minimum, log it as a rejected comment.
             elif ratio >= min_rej_ratio and not is_logged('rejected_log.json', comment.id):
-                #log_comment('rejected_log.json', obj, comment)
+                log_comment('rejected_log.json', obj, comment)
                 print("REJECTED")
                 show_bot_output(comment.body, obj)
 
