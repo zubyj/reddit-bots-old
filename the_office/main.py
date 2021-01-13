@@ -23,7 +23,6 @@ def log_comment(filename, data, comment):
         "comment":comment.body,
         "reply":data["text"],
         "ratio":data["ratio"],
-        "accepted_ratio":data["accepted_ratio"],
         "time":datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
         "season":data["season"],
         "episode":data["episode"],
@@ -67,7 +66,6 @@ def get_best_match(comment, lines):
         "ratio":highestRatio,
         "season":bestLine["season"],
         "episode":bestLine["episode"],
-        "accepted_ratio":bestLine["accepted_ratio"],
         "id":bestLine["id"]
     }
 
@@ -101,7 +99,7 @@ def not_a_bot(author, bots):
 
 # Checks stream of new comments and replies to 
 # comments that match the minimum ratio specified.
-def run_bot(bot_name, lines_file, accepted_log, rejected_log, subreddit="DunderMifflin"):
+def run_bot(bot_name, lines_file, accepted_log, rejected_log, bots):
 
     # Create instance of reddit account and subreddit.
     reddit = praw.Reddit(bot_name)
@@ -120,21 +118,18 @@ def run_bot(bot_name, lines_file, accepted_log, rejected_log, subreddit="DunderM
     min_ratio = 53
     min_rej_ratio = 48
     max_comments = 100
-    bots = ["dwight-schrute-bot", "MichaelGScottBot"]
     counter = 0
-
     for comment in subreddit.stream.comments():
+        # Checks up to max comments.
         counter+=1
         if (counter > max_comments):
             break
         if (not_a_bot(comment.author, bots) and len(comment.body) >= 20):
             obj = get_best_match(comment.body, lines)
             ratio = obj["ratio"]
-            # Custom accepted_ratio set by moderator. Default is 100.
-            accepted_ratio = int(obj["accepted_ratio"])
-            # If ratio meets set minimum or accepted ratio, log comment & reply 
+            # If ratio meets set minimum, log comment & reply 
             # Also increments reply_count object in used line.
-            if ratio >= min_ratio or ratio >= accepted_ratio:
+            if ratio >= min_ratio:
                 log = accepted_log
                 if not is_logged(log, comment.id) and is_unique_comment(log, obj["id"]):
                     print("ACCEPTED")
@@ -151,11 +146,13 @@ def run_bot(bot_name, lines_file, accepted_log, rejected_log, subreddit="DunderM
                 show_bot_output(comment.body, obj)
 
 if __name__ == "__main__":
+    bots = ["dwight-schrute-bot", "MichaelGScottBot"]
+
     while (True):
-        run_bot('MichaelGScottBot', 'michael/replies.json', 'michael/accepted_log.json', 'michael/rejected_log.json')
-        print("SLEEPING FOR 5")
-        time.sleep(300)
-        run_bot('dwight-schrute-bot', 'dwight/replies.json', 'dwight/accepted_log.json', 'dwight/rejected_log.json')
-        print("SLEEPING FOR 5")
-        time.sleep(300)
+        run_bot('MichaelGScottBot', 'michael/replies.json', 'michael/accepted_log.json', 'michael/rejected_log.json', bots)
+        print("SLEEPING FOR 20 MINUTES")
+        time.sleep(1200)
+        run_bot('dwight-schrute-bot', 'dwight/replies.json', 'dwight/accepted_log.json', 'dwight/rejected_log.json', bots)
+        print("SLEEPING FOR 20 MINUTES")
+        time.sleep(1200)
 
