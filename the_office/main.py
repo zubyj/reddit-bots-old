@@ -145,5 +145,10 @@ def run_bot(bot_name, lines_file, accepted_log, rejected_log, subreddit="DunderM
                 show_bot_output(comment.body, obj)
 
 if __name__ == "__main__":
-    run_bot('dwight-schrute-bot', 'dwight/replies.json', 'dwight/accepted_log.json', 'dwight/rejected_log.json')
-    run_bot('MichaelGScottBot', 'michael/replies.json', 'michael/accepted_log.json', 'michael/rejected_log.json')
+    while (true):
+        run_bot('dwight-schrute-bot', 'dwight/replies.json', 'dwight/accepted_log.json', 'dwight/rejected_log.json')
+        print("SLEEPING FOR 5")
+        sleep(500)
+        run_bot('MichaelGScottBot', 'michael/replies.json', 'michael/accepted_log.json', 'michael/rejected_log.json')
+        print("SLEEPING FOR 5")
+        sleep(500)
