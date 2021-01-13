@@ -114,7 +114,7 @@ def run_bot(bot_name, lines_file, accepted_log, rejected_log, subreddit="DunderM
     min_ratio = 53
     min_rej_ratio = 48
 
-    max_comments = 20
+    max_comments = 50
     counter = 0
     for comment in subreddit.stream.comments():
         counter+=1
@@ -146,9 +146,10 @@ def run_bot(bot_name, lines_file, accepted_log, rejected_log, subreddit="DunderM
 
 if __name__ == "__main__":
     while (true):
-        run_bot('dwight-schrute-bot', 'dwight/replies.json', 'dwight/accepted_log.json', 'dwight/rejected_log.json')
-        print("SLEEPING FOR 5")
-        sleep(500)
         run_bot('MichaelGScottBot', 'michael/replies.json', 'michael/accepted_log.json', 'michael/rejected_log.json')
         print("SLEEPING FOR 5")
-        sleep(500)
+        time.sleep(500)
+        run_bot('dwight-schrute-bot', 'dwight/replies.json', 'dwight/accepted_log.json', 'dwight/rejected_log.json')
+        print("SLEEPING FOR 5")
+        time.sleep(500)
+
