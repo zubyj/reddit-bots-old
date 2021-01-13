@@ -8,6 +8,160 @@
             "season": "season test",
             "episode": "episode test",
             "comment_id": "0"
+        },
+        {
+            "comment": "Is that really what happened?",
+            "reply": "What? Oh, just having to much fun. Phyllis, we're going to put you in here. Dwight's going to take care of you.",
+            "ratio": 48,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 18:13:33",
+            "season": 5,
+            "episode": 25,
+            "comment_id": "gj2cru9",
+            "line_id": 3874
+        },
+        {
+            "comment": "Andy's reaction is hilarious tho",
+            "reply": "No it is- don't! I'm not gonna bump. I'm not gonna bump. And it was not hilarious. It was very, very terrifying. ",
+            "ratio": 49,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 18:27:44",
+            "season": 6,
+            "episode": 7,
+            "comment_id": "gj2jh0d",
+            "line_id": 4237
+        },
+        {
+            "comment": "it just seemed like they were making fun of old people",
+            "reply": "Those are real cops, real guns.  I wonder what's going on. ",
+            "ratio": 48,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 18:57:15",
+            "season": 5,
+            "episode": 8,
+            "comment_id": "gj2mh8b",
+            "line_id": 3282
+        },
+        {
+            "comment": "What are there two suns?",
+            "reply": "The two levels being, uh, 'Welcome to Scranton'...",
+            "ratio": 48,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 19:14:30",
+            "season": 4,
+            "episode": 14,
+            "comment_id": "gj2ofa9",
+            "line_id": 2922
+        },
+        {
+            "comment": "See? He fits perfectly!",
+            "reply": "I finally broke down and bought myself a plasma TV. Check it out.  I actually hung this on the wall myself. I want to show you something . A lot of people in the room, need more space?  Voila, right in the wall.",
+            "ratio": 51,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 19:14:37",
+            "season": 4,
+            "episode": 9,
+            "comment_id": "gj2oldl",
+            "line_id": 2712
+        },
+        {
+            "comment": "I want to be friends with her",
+            "reply": "Well... s-sure I can.",
+            "ratio": 49,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 19:30:18",
+            "season": 2,
+            "episode": 14,
+            "comment_id": "gj2ozc9",
+            "line_id": 999
+        },
+        {
+            "comment": "They act like we don\u2019t know aliens exist",
+            "reply": "...make much of out of it, Creed. Good luck to you. I don't know. It is a defective ax, my friend.",
+            "ratio": 49,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 19:46:56",
+            "season": 2,
+            "episode": 11,
+            "comment_id": "gj2rzao",
+            "line_id": 849
+        },
+        {
+            "comment": "He's a great character. Probably chaotic neutral, which is almost always interesting.",
+            "reply": "Yeah, but now his heart is in Thailand along with the rest of his body having random sex.   Okay, sorry, let's, who else?  Oscar.",
+            "ratio": 48,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 19:47:26",
+            "season": 5,
+            "episode": 16,
+            "comment_id": "gj2seq7",
+            "line_id": 3529
+        },
+        {
+            "comment": "Oh really. I will have to check this out.",
+            "reply": "I'm between specialists right now.",
+            "ratio": 50,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 20:06:37",
+            "season": 7,
+            "episode": 4,
+            "comment_id": "gj2tmh2",
+            "line_id": 5004
+        },
+        {
+            "comment": "Everyone knows that he was the assistant to the regional weight carrier.",
+            "reply": "Yes, yes. Assistant to  the regional manager.",
+            "ratio": 48,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 20:06:53",
+            "season": 1,
+            "episode": 5,
+            "comment_id": "gj2u6jc",
+            "line_id": 231
+        },
+        {
+            "comment": "And it's actually really comfortable!",
+            "reply": "What would you like for Christmas little boy?",
+            "ratio": 49,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 21:16:09",
+            "season": 6,
+            "episode": 12,
+            "comment_id": "gj30ioi",
+            "line_id": 4417
+        },
+        {
+            "comment": "It\u2019s $5. Are you guys really this poor?",
+            "reply": "You bet your fat ass we are.",
+            "ratio": 48,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 21:36:44",
+            "season": 5,
+            "episode": 26,
+            "comment_id": "gj31koc",
+            "line_id": 3900
+        },
+        {
+            "comment": "Character development, becoming a brain-dead baby, same thing.",
+            "reply": "And to middles, the unsung heroes. And to moms.",
+            "ratio": 50,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 21:37:02",
+            "season": 7,
+            "episode": 19,
+            "comment_id": "gj32nl5",
+            "line_id": 5432
+        },
+        {
+            "comment": "Why are you the way that you are?",
+            "reply": "No, that was a different hundred dollar bill.",
+            "ratio": 51,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 23:28:55",
+            "season": 3,
+            "episode": 2,
+            "comment_id": "gj3aplc",
+            "line_id": 1359
         }
     ]
 }

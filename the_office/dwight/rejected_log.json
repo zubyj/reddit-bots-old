@@ -3946,6 +3946,83 @@
             "episode": 11,
             "comment_id": "giqgziu",
             "line_id": 1591
+        },
+        {
+            "comment": "Bears, beets, Battlestar Galactica",
+            "reply": "Bears do not--- What is going on--- What are you doing?!",
+            "ratio": 50,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 19:21:31",
+            "season": 3,
+            "episode": 20,
+            "comment_id": "gj2o4d7",
+            "line_id": 1003
+        },
+        {
+            "comment": "There's no lines in the parking lot.",
+            "reply": "I will also be talking my break at the exact same time and in the same location.",
+            "ratio": 51,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 19:22:38",
+            "season": 5,
+            "episode": 11,
+            "comment_id": "gj2pti2",
+            "line_id": 1592
+        },
+        {
+            "comment": "They act like we don\u2019t know aliens exist",
+            "reply": "Don't want it.  Won't open it.  Don't need it.  Won't take it.  Citizens do not accept prizes for being citizens.",
+            "ratio": 49,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 19:56:53",
+            "season": 3,
+            "episode": 18,
+            "comment_id": "gj2rzao",
+            "line_id": 964
+        },
+        {
+            "comment": "And it's actually really comfortable!",
+            "reply": "The gun is just an accessory to the holster, okay? I can't walk around wearing an empty holster.",
+            "ratio": 50,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 21:24:39",
+            "season": 7,
+            "episode": 23,
+            "comment_id": "gj30ioi",
+            "line_id": 2624
+        },
+        {
+            "comment": "Yes he does.  Didn't think that was the favor.",
+            "reply": " Once again, it's show time.",
+            "ratio": 50,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 21:46:11",
+            "season": 8,
+            "episode": 18,
+            "comment_id": "gj32j93",
+            "line_id": 3091
+        },
+        {
+            "comment": "Character development, becoming a brain-dead baby, same thing.",
+            "reply": "No, criminals are like raccoons. Okay, you give 'em a taste of cat food pretty soon they'll be back for the whole cat.",
+            "ratio": 49,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 21:46:12",
+            "season": 6,
+            "episode": 5,
+            "comment_id": "gj32nl5",
+            "line_id": 1968
+        },
+        {
+            "comment": "\u00a1Porque es muy r\u00e1pido!",
+            "reply": "OK. You know what? It's been a real busy day, what do you say we put all this away.",
+            "ratio": 51,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 22:26:27",
+            "season": 8,
+            "episode": 3,
+            "comment_id": "gj35ssq",
+            "line_id": 2717
         }
     ]
 }

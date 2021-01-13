@@ -1119,6 +1119,50 @@
             "episode": 20,
             "comment_id": "giqhw8c",
             "line_id": 594
+        },
+        {
+            "comment": "Mini cupcakes? As in the mini version of regular cupcakes? Which is already the mini version of cake?",
+            "reply": "What about an authentic Pennsylvania Dutch Christmas? Drink some gluhwein, enjoy some hasenpfeffer. Enjoy Christmas with saint Nicolas' rural German companion, Belsnickel.",
+            "ratio": 67,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 18:43:04",
+            "season": 9,
+            "episode": 9,
+            "comment_id": "gj2i9m1",
+            "line_id": 3338
+        },
+        {
+            "comment": "Everyone knows that he was the assistant to the regional weight carrier.",
+            "reply": "Yes!  Thank you.",
+            "ratio": 55,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 20:15:08",
+            "season": 9,
+            "episode": 22,
+            "comment_id": "gj2u6jc",
+            "line_id": 3678
+        },
+        {
+            "comment": "What about Florida Stanley?\nFlorida Stanley smiles, Florida Stanley is happy to go to work. Florida Stanley is who you want on your Florida team.",
+            "reply": "Maybe it's what she does here...",
+            "ratio": 85,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 20:38:43",
+            "season": 8,
+            "episode": 14,
+            "comment_id": "gj2wsdj",
+            "line_id": 2955
+        },
+        {
+            "comment": "When was the last time you saw a bear in Scranton?",
+            "reply": "Last year, idiot! ",
+            "ratio": 53,
+            "accepted_ratio": 100,
+            "time": "12/01/2021 20:42:12",
+            "season": 5,
+            "episode": 11,
+            "comment_id": "gj2xax5",
+            "line_id": 1598
         }
     ]
 }
