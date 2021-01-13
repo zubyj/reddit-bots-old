@@ -95,7 +95,7 @@ def show_bot_output(comment, obj):
 
 # Checks stream of new comments and replies to 
 # comments that match the minimum ratio specified.
-def run_bot(bot_name, lines_file, subreddit="DunderMifflin"):
+def run_bot(bot_name, lines_file, accepted_log, rejected_log, subreddit="DunderMifflin"):
 
     # Create instance of reddit account and subreddit.
     reddit = praw.Reddit(bot_name)
@@ -114,7 +114,12 @@ def run_bot(bot_name, lines_file, subreddit="DunderMifflin"):
     min_ratio = 53
     min_rej_ratio = 48
 
+    max_comments = 20
+    counter = 0
     for comment in subreddit.stream.comments():
+        counter+=1
+        if (counter > max_comments):
+            break
         if (comment.author != bot_name and len(comment.body) >= 20):
             obj = get_best_match(comment.body, lines)
             ratio = obj["ratio"]
@@ -124,24 +129,21 @@ def run_bot(bot_name, lines_file, subreddit="DunderMifflin"):
             # If ratio meets set minimum or accepted ratio, log comment & reply 
             # Also increments reply_count object in used line.
             if ratio >= min_ratio or ratio >= accepted_ratio:
-                log = 'comment_log.json'
+                log = accepted_log
                 if not is_logged(log, comment.id) and is_unique_comment(log, obj["id"]):
+                    print("ACCEPTED")
                     log_comment(log, obj, comment)
                     comment.reply(obj["text"])
-                    print("ACCEPTED")
                     increm_reply_count(lines_file, obj["id"])
                     show_bot_output(comment.body, obj)
                     time.sleep(180)
 
             # If ratio meets another set minimum, log it as a rejected comment.
-            elif ratio >= min_rej_ratio and not is_logged('rejected_log.json', comment.id):
-                log_comment('rejected_log.json', obj, comment)
+            elif ratio >= min_rej_ratio and not is_logged(rejected_log, comment.id):
                 print("REJECTED")
+                log_comment(rejected_log, obj, comment)
                 show_bot_output(comment.body, obj)
 
 if __name__ == "__main__":
-    run_bot('dwight-schrute-bot', 'dwight-replies.json')
-
-
-
-
+    run_bot('dwight-schrute-bot', 'dwight/replies.json', 'dwight/accepted_log.json', 'dwight/rejected_log.json')
+    run_bot('MichaelGScottBot', 'michael/replies.json', 'michael/accepted_log.json', 'michael/rejected_log.json')
