@@ -147,12 +147,11 @@ def run_bot(bot_name, lines_file, accepted_log, rejected_log, bots):
 
 if __name__ == "__main__":
     bots = ["dwight-schrute-bot", "MichaelGScottBot"]
-
     while (True):
         run_bot('MichaelGScottBot', 'michael/replies.json', 'michael/accepted_log.json', 'michael/rejected_log.json', bots)
         print("SLEEPING FOR 20 MINUTES")
-        time.sleep(1200)
+        time.sleep(120)
         run_bot('dwight-schrute-bot', 'dwight/replies.json', 'dwight/accepted_log.json', 'dwight/rejected_log.json', bots)
         print("SLEEPING FOR 20 MINUTES")
-        time.sleep(1200)
+        time.sleep(120)
 

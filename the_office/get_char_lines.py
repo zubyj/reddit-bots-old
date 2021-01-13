@@ -52,7 +52,7 @@ def get_lines(char_name, out_file):
                     json.dump(out_data, f, indent=4)
 
 # Gets all lines from the character, "Dwight Schrute"
-get_lines('Dwight', 'dwight_replies.json')
+get_lines('Andy', 'andy_replies.json')
 
 # Gets all lines from the character, "Michael Scott"
 # get_lines('Michael', 'michael_replies.json')
