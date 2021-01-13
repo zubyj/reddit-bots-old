@@ -93,6 +93,12 @@ def show_bot_output(comment, obj):
     print(obj["ratio"])
     print()
 
+def not_a_bot(author, bots):
+    for bot in bots:
+        if author == bot:
+            return False
+    return True   
+
 # Checks stream of new comments and replies to 
 # comments that match the minimum ratio specified.
 def run_bot(bot_name, lines_file, accepted_log, rejected_log, subreddit="DunderMifflin"):
@@ -113,19 +119,19 @@ def run_bot(bot_name, lines_file, accepted_log, rejected_log, subreddit="DunderM
     # If the min_ratio is over specified value, the bot will reply to the comment.
     min_ratio = 53
     min_rej_ratio = 48
-
-    max_comments = 50
+    max_comments = 100
+    bots = ["dwight-schrute-bot", "MichaelGScottBot"]
     counter = 0
+
     for comment in subreddit.stream.comments():
         counter+=1
         if (counter > max_comments):
             break
-        if (comment.author != bot_name and len(comment.body) >= 20):
+        if (not_a_bot(comment.author, bots) and len(comment.body) >= 20):
             obj = get_best_match(comment.body, lines)
             ratio = obj["ratio"]
             # Custom accepted_ratio set by moderator. Default is 100.
             accepted_ratio = int(obj["accepted_ratio"])
-
             # If ratio meets set minimum or accepted ratio, log comment & reply 
             # Also increments reply_count object in used line.
             if ratio >= min_ratio or ratio >= accepted_ratio:
@@ -145,11 +151,11 @@ def run_bot(bot_name, lines_file, accepted_log, rejected_log, subreddit="DunderM
                 show_bot_output(comment.body, obj)
 
 if __name__ == "__main__":
-    while (true):
+    while (True):
         run_bot('MichaelGScottBot', 'michael/replies.json', 'michael/accepted_log.json', 'michael/rejected_log.json')
         print("SLEEPING FOR 5")
-        time.sleep(500)
+        time.sleep(300)
         run_bot('dwight-schrute-bot', 'dwight/replies.json', 'dwight/accepted_log.json', 'dwight/rejected_log.json')
         print("SLEEPING FOR 5")
-        time.sleep(500)
+        time.sleep(300)
 
