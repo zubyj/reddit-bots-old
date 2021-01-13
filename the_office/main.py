@@ -120,13 +120,17 @@ def run_bot(bot_name, lines_file, accepted_log, rejected_log, bots):
     max_comments = 100
     counter = 0
     for comment in subreddit.stream.comments():
-        # Checks up to max comments.
+        # If max comments reached, stop checking comments.
         counter+=1
         if (counter > max_comments):
             break
-        if (not_a_bot(comment.author, bots) and len(comment.body) >= 20):
+        comment_len = 20
+        if (not_a_bot(comment.author, bots) and len(comment.body) >= comment_len):
+            # Gets character's best matched response to the comment. 
             obj = get_best_match(comment.body, lines)
             ratio = obj["ratio"]
+            show_bot_output(comment.body, obj)
+            print()
             # If ratio meets set minimum, log comment & reply 
             # Also increments reply_count object in used line.
             if ratio >= min_ratio:
@@ -138,7 +142,6 @@ def run_bot(bot_name, lines_file, accepted_log, rejected_log, bots):
                     increm_reply_count(lines_file, obj["id"])
                     show_bot_output(comment.body, obj)
                     time.sleep(180)
-
             # If ratio meets another set minimum, log it as a rejected comment.
             elif ratio >= min_rej_ratio and not is_logged(rejected_log, comment.id):
                 print("REJECTED")
@@ -147,11 +150,13 @@ def run_bot(bot_name, lines_file, accepted_log, rejected_log, bots):
 
 if __name__ == "__main__":
     bots = ["dwight-schrute-bot", "MichaelGScottBot"]
+    sleep_len = 600
+
     while (True):
         run_bot('MichaelGScottBot', 'michael/replies.json', 'michael/accepted_log.json', 'michael/rejected_log.json', bots)
-        print("SLEEPING FOR 20 MINUTES")
-        time.sleep(120)
+        print("SLEEPING FOR " + (sleep_len/60) + " MINUTES")
+        time.sleep(sleep_len)
         run_bot('dwight-schrute-bot', 'dwight/replies.json', 'dwight/accepted_log.json', 'dwight/rejected_log.json', bots)
-        print("SLEEPING FOR 20 MINUTES")
-        time.sleep(120)
+        print("SLEEPING FOR " + (sleep_len/60) + " MINUTES")
+        time.sleep(sleep_len)
 
