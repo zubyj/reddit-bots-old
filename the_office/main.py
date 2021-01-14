@@ -117,7 +117,7 @@ def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
     # If the min_ratio is over specified value, the bot will reply to the comment.
     min_ratio = 53
     min_rej_ratio = 48
-    max_comments = 10
+    max_comments = 100
     counter = 0
     for comment in subreddit.stream.comments():
         # If max comments reached, stop checking comments.
@@ -163,6 +163,6 @@ def run_bot(name, folder, sleep_len):
 
 if __name__ == "__main__":
     while (True):
-        run_bot('andy-bernard-bot', 'andy', 10)
-        run_bot('MichaelGScottBot', 'michael', 10)
-        run_bot('dwight-schrute-bot', 'dwight', 10)
+        run_bot('andy-bernard-bot', 'andy', 300)
+        run_bot('MichaelGScottBot', 'michael', 300)
+        run_bot('dwight-schrute-bot', 'dwight', 300)
