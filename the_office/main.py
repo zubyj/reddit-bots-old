@@ -99,7 +99,7 @@ def not_a_bot(author, bots):
 
 # Checks stream of new comments and replies to 
 # comments that match the minimum ratio specified.
-def run_bot(bot_name, lines_file, accepted_log, rejected_log, bots):
+def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
 
     # Create instance of reddit account and subreddit.
     reddit = praw.Reddit(bot_name)
@@ -117,7 +117,7 @@ def run_bot(bot_name, lines_file, accepted_log, rejected_log, bots):
     # If the min_ratio is over specified value, the bot will reply to the comment.
     min_ratio = 53
     min_rej_ratio = 48
-    max_comments = 100
+    max_comments = 10
     counter = 0
     for comment in subreddit.stream.comments():
         # If max comments reached, stop checking comments.
@@ -125,6 +125,9 @@ def run_bot(bot_name, lines_file, accepted_log, rejected_log, bots):
         if (counter > max_comments):
             break
         comment_len = 20
+
+        bots = ["dwight-schrute-bot", "MichaelGScottBot", "andy-bernard-bot"]
+
         if (not_a_bot(comment.author, bots) and len(comment.body) >= comment_len):
             # Gets character's best matched response to the comment. 
             obj = get_best_match(comment.body, lines)
@@ -148,15 +151,18 @@ def run_bot(bot_name, lines_file, accepted_log, rejected_log, bots):
                 log_comment(rejected_log, obj, comment)
                 show_bot_output(comment.body, obj)
 
+# Runs the bot, logs replies, and goes to sleep.
+def run_bot(name, folder, sleep_len):
+    print("RUNNING " + name)
+    replies = folder + '/replies.json'
+    accepted = folder + '/accepted_log.json'
+    rejected = folder + '/rejected_log.json'
+    reply_comments(name, replies, accepted, rejected)
+    print("SLEEPING FOR " + str(sleep_len/60) + " MINUTES")
+    time.sleep(sleep_len)
+
 if __name__ == "__main__":
-    bots = ["dwight-schrute-bot", "MichaelGScottBot"]
-    sleep_len = 600
-
     while (True):
-        run_bot('MichaelGScottBot', 'michael/replies.json', 'michael/accepted_log.json', 'michael/rejected_log.json', bots)
-        print("SLEEPING FOR " + (sleep_len/60) + " MINUTES")
-        time.sleep(sleep_len)
-        run_bot('dwight-schrute-bot', 'dwight/replies.json', 'dwight/accepted_log.json', 'dwight/rejected_log.json', bots)
-        print("SLEEPING FOR " + (sleep_len/60) + " MINUTES")
-        time.sleep(sleep_len)
-
+        run_bot('andy-bernard-bot', 'andy', 10)
+        run_bot('MichaelGScottBot', 'michael', 10)
+        run_bot('dwight-schrute-bot', 'dwight', 10)

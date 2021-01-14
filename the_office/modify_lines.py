@@ -4,7 +4,6 @@ def add_attr(lines):
     counter = 1
     for line in lines:
         line["reply_count"] = 0
-        line["accepted_ratio"] = 100
         line["id"] = counter
         counter+=1
 
@@ -56,4 +55,4 @@ def modify_lines(in_file, out_file):
     with open(out_file, 'w') as f:
         json.dump(data, f, indent=4)
 
-modify_lines('michael_replies.json', 'michael-replies2.json')
+modify_lines('andy_replies.json', 'replies.json')
