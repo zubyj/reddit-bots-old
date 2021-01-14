@@ -132,8 +132,6 @@ def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
             # Gets character's best matched response to the comment. 
             obj = get_best_match(comment.body, lines)
             ratio = obj["ratio"]
-            show_bot_output(comment.body, obj)
-            print()
             # If ratio meets set minimum, log comment & reply 
             # Also increments reply_count object in used line.
             if ratio >= min_ratio:
@@ -144,6 +142,7 @@ def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
                     comment.reply(obj["text"])
                     increm_reply_count(lines_file, obj["id"])
                     show_bot_output(comment.body, obj)
+                    print("SLEEPING FOR 3 MINUTES")
                     time.sleep(180)
             # If ratio meets another set minimum, log it as a rejected comment.
             elif ratio >= min_rej_ratio and not is_logged(rejected_log, comment.id):

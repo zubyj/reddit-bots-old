@@ -1,0 +1,18 @@
+{
+    "lines": [
+        {
+            "season": 0,
+            "episode": 0,
+            "line": {
+                "character": "zuby",
+                "text": "ayo zuby"
+            },
+            "response": {
+                "character": "not zuby",
+                "text": "shut up zuby"
+            },
+            "reply_count": 0,
+            "id": 1
+        }
+    ]
+}
