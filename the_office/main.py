@@ -164,4 +164,3 @@ if __name__ == "__main__":
     while (True):
         run_bot('andy-bernard-bot', 'andy', 300)
         run_bot('MichaelGScottBot', 'michael', 300)
-        run_bot('dwight-schrute-bot', 'dwight', 300)
