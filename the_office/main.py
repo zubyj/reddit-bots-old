@@ -115,8 +115,8 @@ def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
     #
     # Every match returns a ratio.
     # If the min_ratio is over specified value, the bot will reply to the comment.
-    min_ratio = 53
-    min_rej_ratio = 48
+    min_ratio = 60
+    min_rej_ratio = 50
     max_comments = 100
     counter = 0
     for comment in subreddit.stream.comments():
