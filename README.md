@@ -1,7 +1,25 @@
 # reddit-bots
 Reddit bots which emulate TV characters & reply to comments with quotes from the character.
 
-Current Live Bots
-http://reddit.com/u/dwight-schrute-bot
-https://www.reddit.com/user/michaelgscottbot
-https://www.reddit.com/user/andy-bernard-bot
+## Current Live Bots
+### The Office
+* [Dwight Schrute](http://reddit.com/u/dwight-schrute-bot)
+* [Michael Scott](https://www.reddit.com/user/michaelgscottbot)
+* [Andy Bernard](https://www.reddit.com/user/andy-bernard-bot)
+
+## How it works
+ Reddit comments are compared to lines that the character has responded to. If the line and comment are similar, the bot will get the character's response and reply to the comment.
+ 
+
+#### Example 
+In Season 3 Episode 9, Dwight and Michael have an exchange
+
+Dwight: "Prison Mike, what's the very very worst thing about prison?"
+
+Michael : "The worst thing about prison was the... was the Dementors. They... were flying all over the place, and they were scary. And they'd come down, and they'd suck the soul out of your body, and it hurt!."
+
+If the Reddit comment is "What's the worst thing about prison," the match will be detected and the Michael Scott Bot will automatically reply with his response from the show. 
+
+#### How matches are found
+
+
