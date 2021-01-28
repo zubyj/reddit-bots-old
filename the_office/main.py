@@ -100,7 +100,6 @@ def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
 
     # Create instance of reddit account and subreddit.
     reddit = praw.Reddit(bot_name)
-    subreddit = reddit.subreddit("DunderMifflin")
     # Open file of character's lines.
     with open(lines_file) as f:
         data = json.load(f)
@@ -113,35 +112,31 @@ def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
     min_ratio = 60
     min_rej_ratio = 50
     max_comments = 100
-    counter = 0
-    for comment in subreddit.stream.comments():
-        # If max comments reached, stop checking comments.
-        counter+=1
-        if (counter > max_comments):
-            break
-        comment_len = 20
-        bots = ["dwight-schrute-bot", "MichaelGScottBot", "andy-bernard-bot"]
-        if (not_a_bot(comment.author, bots) and len(comment.body) >= comment_len):
-            # Gets character's best matched response to the comment. 
-            obj = get_best_match(comment.body, lines)
-            ratio = obj["ratio"]
-            # If ratio meets set minimum, log comment & reply 
-            # Also increments reply_count object in used line.
-            if ratio >= min_ratio:
-                log = accepted_log
-                if not is_logged(log, comment.id) and is_unique_comment(log, obj["id"]):
-                    print("ACCEPTED")
-                    log_comment(log, obj, comment)
-                    comment.reply(obj["text"])
-                    increm_reply_count(lines_file, obj["id"])
+    for submission in reddit.subreddit("all").rising(limit=25):
+        comments = list(submission.comments)
+        for comment in comments:
+            bots = ["dwight-schrute-bot", "MichaelGScottBot", "andy-bernard-bot"]
+            min_comment_len = 20
+            if (not_a_bot(comment.author, bots) and len(comment.body) >= min_comment_len):
+                # Gets character's best matched reply to comment.
+                obj = get_best_match(comment.body, lines)
+                ratio = obj["ratio"]
+                if ratio > 40: 
+                    print("COMMENT " + comment.body + " , RATIO : " + str(ratio))
+                # If ratio meets set minimum, log comment & reply in accepted.
+                if ratio >= min_ratio:
+                    log = accepted_log
+                    if not is_logged(log, comment.id) and is_unique_comment(log, obj["id"]):
+                        print("ACCEPTED")
+                        log_comment(log, obj, comment)
+                        comment.reply(obj["text"])
+                        increm_reply_count(lines_file, obj["id"])
+                        show_bot_output(comment.body, obj)
+                # If ratio meets rejected minimum, log comment & reply in rejected. 
+                elif ratio >= min_rej_ratio and not is_logged(rejected_log, comment.id):
+                    print("REJECTED")
+                    log_comment(rejected_log, obj, comment)
                     show_bot_output(comment.body, obj)
-                    print("SLEEPING FOR 3 MINUTES")
-                    time.sleep(180)
-            # If ratio meets another set minimum, log it as a rejected comment.
-            elif ratio >= min_rej_ratio and not is_logged(rejected_log, comment.id):
-                print("REJECTED")
-                log_comment(rejected_log, obj, comment)
-                show_bot_output(comment.body, obj)
 
 # Replies to comments & logs replies.
 def run_bot(name, folder):
@@ -158,7 +153,8 @@ def sleep_time(sleep_len):
 if __name__ == "__main__":
     sleep_len = 300
     while (True):
-        run_bot('andy-bernard-bot', 'andy')
-        sleep_time(sleep_len)
         run_bot('MichaelGScottBot', 'michael')
         sleep_time(sleep_len)
+        run_bot('dwight-schrute-bot', 'dwight')
+        sleep_time(sleep_len)
+        # run_bot('andy-bernard-bot', 'andy')
