@@ -97,23 +97,14 @@ def not_a_bot(author, bots):
 # Checks stream of new comments and replies to 
 # comments that match the minimum ratio specified.
 def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
-
-    # Create instance of reddit account and subreddit.
     reddit = praw.Reddit(bot_name)
-    # Open file of character's lines.
     with open(lines_file) as f:
         data = json.load(f)
     lines = data["lines"]
-    # Check every new comment and tries to find the closest matching line
-    # that the character has responded to.
-    #
-    # Every match returns a ratio.
-    # If the min_ratio is over specified value, the bot will reply to the comment.
-    min_ratio = 60
+    min_ratio = 55
     min_rej_ratio = 50
-    max_comments = 100
     for submission in reddit.subreddit("all").rising(limit=25):
-        comments = list(submission.comments)
+        comments = submission.comments
         for comment in comments:
             bots = ["dwight-schrute-bot", "MichaelGScottBot", "andy-bernard-bot"]
             min_comment_len = 20
@@ -132,6 +123,7 @@ def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
                         comment.reply(obj["text"])
                         increm_reply_count(lines_file, obj["id"])
                         show_bot_output(comment.body, obj)
+                        break
                 # If ratio meets rejected minimum, log comment & reply in rejected. 
                 elif ratio >= min_rej_ratio and not is_logged(rejected_log, comment.id):
                     print("REJECTED")
@@ -151,7 +143,7 @@ def sleep_time(sleep_len):
     time.sleep(sleep_len)
 
 if __name__ == "__main__":
-    sleep_len = 300
+    sleep_len = 120
     while (True):
         run_bot('MichaelGScottBot', 'michael')
         sleep_time(sleep_len)
