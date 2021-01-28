@@ -112,8 +112,6 @@ def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
                 # Gets character's best matched reply to comment.
                 obj = get_best_match(comment.body, lines)
                 ratio = obj["ratio"]
-                if ratio > 40: 
-                    print("COMMENT " + comment.body + " , RATIO : " + str(ratio))
                 # If ratio meets set minimum, log comment & reply in accepted.
                 if ratio >= min_ratio:
                     log = accepted_log
