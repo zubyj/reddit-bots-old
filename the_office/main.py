@@ -104,7 +104,7 @@ def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
     min_ratio = 53
     min_rej_ratio = 48
 
-    for submission in reddit.subreddit("all").rising(limit=25).stream.comments():
+    for submission in reddit.subreddit("all").rising(limit=25):
         for comment in submission.comments.list():
             bots = ["dwight-schrute-bot", "MichaelGScottBot", "andy-bernard-bot"]
             min_comment_len = 20
