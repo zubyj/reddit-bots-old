@@ -101,18 +101,17 @@ def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
     with open(lines_file) as f:
         data = json.load(f)
     lines = data["lines"]
-    min_ratio = 52
+    min_ratio = 53
     min_rej_ratio = 48
-    for submission in reddit.subreddit("all").rising(limit=25):
-        comments = submission.comments
-        for comment in comments:
+
+    for submission in reddit.subreddit("rising").rising(limit=10).stream.submissions():
+        for comment in submission.comments.list():
             bots = ["dwight-schrute-bot", "MichaelGScottBot", "andy-bernard-bot"]
-            min_comment_len = 20
+            min_comment_len = 20    
             if (not_a_bot(comment.author, bots) and len(comment.body) >= min_comment_len):
-                # Gets character's best matched reply to comment.
+                # If ratio meets set minimum, log comment & reply in accepted.
                 obj = get_best_match(comment.body, lines)
                 ratio = obj["ratio"]
-                # If ratio meets set minimum, log comment & reply in accepted.
                 if ratio >= min_ratio:
                     log = accepted_log
                     if not is_logged(log, comment.id) and is_unique_comment(log, obj["id"]):
@@ -121,7 +120,6 @@ def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
                         comment.reply(obj["text"])
                         increm_reply_count(lines_file, obj["id"])
                         show_bot_output(comment.body, obj)
-                        break
                 # If ratio meets rejected minimum, log comment & reply in rejected. 
                 elif ratio >= min_rej_ratio and not is_logged(rejected_log, comment.id):
                     print("REJECTED")
@@ -138,11 +136,10 @@ def run_bot(name, folder):
 
 def sleep_time(sleep_len):
     print("SLEEPING FOR " + str(sleep_len/60) + " MINUTES")
-    time.sleep(sleep_len)
+    time.sleep(600)
 
 if __name__ == "__main__":
     while (True):
         run_bot('MichaelGScottBot', 'michael')
         run_bot('dwight-schrute-bot', 'dwight')
-        sleep_time(600)
         # run_bot('andy-bernard-bot', 'andy')
