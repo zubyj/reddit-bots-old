@@ -101,10 +101,11 @@ def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
     with open(lines_file) as f:
         data = json.load(f)
     lines = data["lines"]
-    min_ratio = 53
+    min_ratio = 52
     min_rej_ratio = 48
 
-    for submission in reddit.subreddit("all").rising(limit=25):
+    for submission in reddit.subreddit("all").rising(limit=10):
+        submission.comments.replace_more(limit=None)
         for comment in submission.comments.list():
             bots = ["dwight-schrute-bot", "MichaelGScottBot", "andy-bernard-bot"]
             min_comment_len = 20
@@ -113,6 +114,10 @@ def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
                 # If ratio meets set minimum, log comment & reply in accepted.
                 obj = get_best_match(comment.body, lines)
                 ratio = obj["ratio"]
+                if ratio > 40:
+                    print("COMMENT : " + comment.body + " RATIO : " + str(ratio))
+                    print("REPLY " + obj["text"])
+                    print()
                 if ratio >= min_ratio:
                     log = accepted_log
                     if not is_logged(log, comment.id) and is_unique_comment(log, obj["id"]):
@@ -129,19 +134,21 @@ def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
                     show_bot_output(comment.body, obj)
 
 # Replies to comments & logs replies.
-def run_bot(name, folder):
-    print("RUNNING " + name)
+def run_bot(username, folder):
+    print("RUNNING " + username)
     replies = folder + '/replies.json'
     accepted = folder + '/accepted_log.json'
     rejected = folder + '/rejected_log.json'
-    reply_comments(name, replies, accepted, rejected)
+    reply_comments(username, replies, accepted, rejected)
 
 def sleep_time(sleep_len):
     print("SLEEPING FOR " + str(sleep_len/60) + " MINUTES")
-    time.sleep(600)
+    time.sleep(sleep_len)
 
 if __name__ == "__main__":
     while (True):
         run_bot('MichaelGScottBot', 'michael')
         run_bot('dwight-schrute-bot', 'dwight')
+        sleep_time(180)
+
         # run_bot('andy-bernard-bot', 'andy')
