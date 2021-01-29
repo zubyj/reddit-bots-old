@@ -101,8 +101,8 @@ def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
     with open(lines_file) as f:
         data = json.load(f)
     lines = data["lines"]
-    min_ratio = 55
-    min_rej_ratio = 50
+    min_ratio = 52
+    min_rej_ratio = 48
     for submission in reddit.subreddit("all").rising(limit=25):
         comments = submission.comments
         for comment in comments:
@@ -141,10 +141,8 @@ def sleep_time(sleep_len):
     time.sleep(sleep_len)
 
 if __name__ == "__main__":
-    sleep_len = 120
     while (True):
         run_bot('MichaelGScottBot', 'michael')
-        sleep_time(sleep_len)
         run_bot('dwight-schrute-bot', 'dwight')
-        sleep_time(sleep_len)
+        sleep_time(600)
         # run_bot('andy-bernard-bot', 'andy')

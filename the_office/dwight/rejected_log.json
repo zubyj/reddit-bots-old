@@ -4123,6 +4123,26 @@
             "episode": 12,
             "comment_id": "gj75r8p",
             "line_id": 1613
+        },
+        {
+            "comment": "Claire, I wouldn't let you get off my face!",
+            "reply": "Oh Pam. Take a chill pill.",
+            "ratio": 50,
+            "time": "28/01/2021 15:41:51",
+            "season": 3,
+            "episode": 10,
+            "comment_id": "gl5w92g",
+            "line_id": 838
+        },
+        {
+            "comment": "Literally nothing metal about this",
+            "reply": "No, Toby, this is different. He's already dead.",
+            "ratio": 50,
+            "time": "28/01/2021 17:50:40",
+            "season": 3,
+            "episode": 10,
+            "comment_id": "gl6cqbp",
+            "line_id": 836
         }
     ]
 }
