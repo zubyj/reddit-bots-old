@@ -104,11 +104,12 @@ def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
     min_ratio = 53
     min_rej_ratio = 48
 
-    for submission in reddit.subreddit("rising").rising(limit=10).stream.submissions():
+    for submission in reddit.subreddit("all").rising(limit=25).stream.comments():
         for comment in submission.comments.list():
             bots = ["dwight-schrute-bot", "MichaelGScottBot", "andy-bernard-bot"]
-            min_comment_len = 20    
+            min_comment_len = 20
             if (not_a_bot(comment.author, bots) and len(comment.body) >= min_comment_len):
+
                 # If ratio meets set minimum, log comment & reply in accepted.
                 obj = get_best_match(comment.body, lines)
                 ratio = obj["ratio"]
@@ -120,6 +121,7 @@ def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
                         comment.reply(obj["text"])
                         increm_reply_count(lines_file, obj["id"])
                         show_bot_output(comment.body, obj)
+
                 # If ratio meets rejected minimum, log comment & reply in rejected. 
                 elif ratio >= min_rej_ratio and not is_logged(rejected_log, comment.id):
                     print("REJECTED")
