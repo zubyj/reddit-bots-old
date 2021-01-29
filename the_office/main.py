@@ -69,7 +69,6 @@ def get_best_match(comment, lines):
     }
 
 # Makes sure every few comments are unique.
-# Ex. if unique_factor is set to 5, past 5 comments must be unique.
 def is_unique_comment(filename, line_id):
     unique_factor = 5
     with open(filename) as f:
@@ -110,11 +109,10 @@ def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
             bots = ["dwight-schrute-bot", "MichaelGScottBot", "andy-bernard-bot"]
             min_comment_len = 20
             if (not_a_bot(comment.author, bots) and len(comment.body) >= min_comment_len):
-
                 # If ratio meets set minimum, log comment & reply in accepted.
                 obj = get_best_match(comment.body, lines)
                 ratio = obj["ratio"]
-                if ratio > 40:
+                if ratio > 45:
                     print("COMMENT : " + comment.body + " RATIO : " + str(ratio))
                     print("REPLY " + obj["text"])
                     print()
@@ -122,8 +120,8 @@ def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
                     log = accepted_log
                     if not is_logged(log, comment.id) and is_unique_comment(log, obj["id"]):
                         print("ACCEPTED")
-                        log_comment(log, obj, comment)
                         comment.reply(obj["text"])
+                        log_comment(log, obj, comment)
                         increm_reply_count(lines_file, obj["id"])
                         show_bot_output(comment.body, obj)
 
