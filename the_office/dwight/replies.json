@@ -16987,13 +16987,13 @@
             "episode": 3,
             "line": {
                 "character": "Jim",
-                "text": "How long have you been a man?"
+                "text": "How long have you begiten a man?"
             },
             "response": {
                 "character": "Dwight",
                 "text": "I was born a man, Halpert."
             },
-            "reply_count": 0,
+            "reply_count": 1,
             "id": 1214
         },
         {

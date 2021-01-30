@@ -2,7 +2,7 @@ import praw
 import json
 from fuzzywuzzy import fuzz
 from datetime import datetime
-import time
+from bot import bot
 
 # Checks comment logs so bot doesn't reply to same comment.
 def is_logged(filename, comment_id):
@@ -93,23 +93,56 @@ def not_a_bot(author, bots):
             return False
     return True   
 
-# Checks stream of new comments and replies to 
-# comments that match the minimum ratio specified.
-def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
-    reddit = praw.Reddit(bot_name)
-    with open(lines_file) as f:
+def get_lines(filename):
+    with open(filename) as f:
         data = json.load(f)
     lines = data["lines"]
-    min_ratio = 52
-    min_rej_ratio = 48
+    return lines
 
+# Given all the bots responses, returns the one
+# with the best match (highest ratio)
+def get_best_ratio_res(*responses):
+    bestResponse = responses[0]
+    for response in responses:
+        if response['ratio'] > bestResponse['ratio']:
+            bestResponse = response
+    return bestResponse
+
+def get_best_response(text, *bots):
+    best_res = bots[0].get_best_response(text)
+    for bot in bots:
+        res = bot.get_best_response(text)
+        if res['ratio'] > best_res['ratio']:
+            best_res = res
+    return best_res
+
+def run_the_bot():
+    reddit = praw.Reddit('dwight-schrute-bot')
+    dwight = bot('dwight')
+    michael = bot('michael')
+
+    min_ratio = 50
+
+    for submission in reddit.subreddit('all').rising(limit=10):
+        submission.comments.replace_more(limit=None)
+        for comment in submission.comments.list():
+            res = get_best_response(comment.body, dwight, michael)
+
+
+
+def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
+    # If ratio meets set minimum, log comment & reply in accepted log.
+    reddit = praw.Reddit(bot_name)
+    lines = get_lines(lines_file)
+    min_ratio = 50
+    min_rej_ratio = 48
     for submission in reddit.subreddit("all").rising(limit=10):
+        # Makes sure the last comment isn't a MoreComments object. 
         submission.comments.replace_more(limit=None)
         for comment in submission.comments.list():
             bots = ["dwight-schrute-bot", "MichaelGScottBot", "andy-bernard-bot"]
             min_comment_len = 20
             if (not_a_bot(comment.author, bots) and len(comment.body) >= min_comment_len):
-                # If ratio meets set minimum, log comment & reply in accepted.
                 obj = get_best_match(comment.body, lines)
                 ratio = obj["ratio"]
                 if ratio > 45:
@@ -124,8 +157,9 @@ def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
                         log_comment(log, obj, comment)
                         increm_reply_count(lines_file, obj["id"])
                         show_bot_output(comment.body, obj)
+                        time.sleep(180)
 
-                # If ratio meets rejected minimum, log comment & reply in rejected. 
+                # If ratio meets rejected minimum, log comment & reply in rejected.
                 elif ratio >= min_rej_ratio and not is_logged(rejected_log, comment.id):
                     print("REJECTED")
                     log_comment(rejected_log, obj, comment)
@@ -145,8 +179,8 @@ def sleep_time(sleep_len):
 
 if __name__ == "__main__":
     while (True):
-        run_bot('MichaelGScottBot', 'michael')
-        run_bot('dwight-schrute-bot', 'dwight')
+        #run_bot('MichaelGScottBot', 'michael')
+        #run_bot('dwight-schrute-bot', 'dwight')
+        run_the_bot()
         sleep_time(180)
-
         # run_bot('andy-bernard-bot', 'andy')
