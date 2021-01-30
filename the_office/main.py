@@ -122,13 +122,14 @@ def run_the_bot():
     michael = bot('michael')
 
     min_ratio = 50
-
     for submission in reddit.subreddit('all').rising(limit=10):
         submission.comments.replace_more(limit=None)
         for comment in submission.comments.list():
             res = get_best_response(comment.body, dwight, michael)
-
-
+            print(res['name'])
+            print("COMMENT " + comment.body)
+            print("RESPONSE " + res['text'])
+            print()
 
 def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
     # If ratio meets set minimum, log comment & reply in accepted log.

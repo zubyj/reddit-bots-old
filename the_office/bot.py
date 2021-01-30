@@ -23,6 +23,7 @@ class bot:
                 highestRatio = ratio
                 bestLine = line
         return {
+            "name":self.name,
             "text":bestLine["response"]["text"],
             "ratio":highestRatio,
             "season":bestLine["season"],
