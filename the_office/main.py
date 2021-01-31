@@ -110,35 +110,41 @@ def get_best_ratio_res(*responses):
     return bestResponse
 
 def get_best_response(text, *bots):
-    best_res = bots[0].get_best_response(text)
+    best_res = bots[0].get_reply(text)
     for bot in bots:
-        res = bot.get_best_response(text)
+        res = bot.get_reply(text)
         if res['ratio'] > best_res['ratio']:
             best_res = res
     return best_res
 
+# Comment is valid if 
+#   1. Longer than min_length
+#   2. If one of our bots isn't the author.
+#   3. The bots haven't replied to it.
 def is_valid_comment(comment, bots):
     min_len = 20
     if len(comment.body) < min_len:
         return False
-    for bot_user in bots:
-        if comment.author == bot_user:
+    for bot in bots:
+        if comment.author == bot.get_username():
             return False
+        accepted = bot.get_accepted_log()
+        rejected = bot.get_rejected_log()
+        for log in accepted:
+            if log['comment_id'] == comment.id:
+                return False
+        for log in rejected:
+            if log['comment_id'] == comment.id:
+                return False
     return True
 
 def run_the_bot(*bots):
-    usernames = []
-    folders = []
-    for bot in bots:
-        usernames.append(bot.get_username())
-        folders.append(bot.get_folder())
-
-    reddit = praw.Reddit('dwight-schrute-bot')    
-    accepted_ratio = 45
+    reddit = praw.Reddit('dwight-schrute-bot')
+    accepted_ratio = 60
     for submission in reddit.subreddit('all').rising(limit=10):
         submission.comments.replace_more(limit=None)
         for comment in submission.comments.list():
-            if is_valid_comment(comment, usernames):
+            if is_valid_comment(comment, bots):
                 res = get_best_response(comment.body, dwight, michael)
                 ratio = res['ratio']
                 if ratio > accepted_ratio:

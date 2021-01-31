@@ -32,7 +32,7 @@ class bot:
         return self.rejected
 
     # Gets character's best response to given text. 
-    def get_best_response(self, text):
+    def get_reply(self, text):
         highestRatio = 0
         bestLine = self.lines[0]
         for line in self.lines:
@@ -49,3 +49,12 @@ class bot:
             "episode":bestLine["episode"],
             "id":bestLine["id"],
         }
+
+    def is_logged(self, comment_id):
+        for log in get_accepted_log():
+            if log['comment_id'] == comment_id:
+                return True
+        for log in get_rejected_log():
+            if log['comment_id'] == comment_id:
+                return True
+        return False
