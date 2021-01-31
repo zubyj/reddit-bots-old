@@ -2,15 +2,34 @@ import json
 from fuzzywuzzy import fuzz
 
 class bot:
-    def __init__(self, name):
+    def __init__(self, name, folder):
         self.name = name
-        lines_file = self.name + '/replies.json'
-        with open(lines_file) as f:
-            data = json.load(f)
-        self.lines = data['lines']
+        self.folder = folder
+        lines = folder + '/replies.json'
+        accepted = folder + '/accepted_log.json'
+        rejected = folder + '/rejected_log.json'
+        with open(lines) as f, open(accepted) as f2, open(rejected) as f3:
+            data1 = json.load(f)
+            data2 = json.load(f2)
+            data3 = json.load(f3)
+        self.lines = data1['lines']
+        self.accepted = data2['logs']
+        self.rejected = data3['logs']
+
+    def get_username(self):
+        return self.name
+
+    def get_folder(self):
+        return self.folder
 
     def get_lines(self):
         return self.lines
+    
+    def get_accepted_log(self):
+        return self.accepted
+    
+    def get_rejected_log(self):
+        return self.rejected
 
     # Gets character's best response to given text. 
     def get_best_response(self, text):

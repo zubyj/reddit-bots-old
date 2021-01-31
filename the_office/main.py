@@ -2,6 +2,7 @@ import praw
 import json
 from fuzzywuzzy import fuzz
 from datetime import datetime
+from datetime import time
 from bot import bot
 
 # Checks comment logs so bot doesn't reply to same comment.
@@ -116,20 +117,36 @@ def get_best_response(text, *bots):
             best_res = res
     return best_res
 
-def run_the_bot():
-    reddit = praw.Reddit('dwight-schrute-bot')
-    dwight = bot('dwight')
-    michael = bot('michael')
+def is_valid_comment(comment, bots):
+    min_len = 20
+    if len(comment.body) < min_len:
+        return False
+    for bot_user in bots:
+        if comment.author == bot_user:
+            return False
+    return True
 
-    min_ratio = 50
+def run_the_bot(*bots):
+    usernames = []
+    folders = []
+    for bot in bots:
+        usernames.append(bot.get_username())
+        folders.append(bot.get_folder())
+
+    reddit = praw.Reddit('dwight-schrute-bot')    
+    accepted_ratio = 45
     for submission in reddit.subreddit('all').rising(limit=10):
         submission.comments.replace_more(limit=None)
         for comment in submission.comments.list():
-            res = get_best_response(comment.body, dwight, michael)
-            print(res['name'])
-            print("COMMENT " + comment.body)
-            print("RESPONSE " + res['text'])
-            print()
+            if is_valid_comment(comment, usernames):
+                res = get_best_response(comment.body, dwight, michael)
+                ratio = res['ratio']
+                if ratio > accepted_ratio:
+                    print(ratio)
+                    print(res['name'])
+                    print("COMMENT " + comment.body)
+                    print("RESPONSE " + res['text'])
+                    print()
 
 def reply_comments(bot_name, lines_file, accepted_log, rejected_log):
     # If ratio meets set minimum, log comment & reply in accepted log.
@@ -175,13 +192,15 @@ def run_bot(username, folder):
     reply_comments(username, replies, accepted, rejected)
 
 def sleep_time(sleep_len):
-    print("SLEEPING FOR " + str(sleep_len/60) + " MINUTES")
-    time.sleep(sleep_len)
+    print("SLEEPING FOR " + str(sleep_len/60) + " MINUTES") 
+    time.sleep(300)
 
 if __name__ == "__main__":
     while (True):
         #run_bot('MichaelGScottBot', 'michael')
         #run_bot('dwight-schrute-bot', 'dwight')
-        run_the_bot()
+        dwight = bot('dwight-schrute-bot', 'dwight')
+        michael = bot('michaelGScottBot', 'michael')
+        run_the_bot(dwight, michael)
         sleep_time(180)
         # run_bot('andy-bernard-bot', 'andy')
