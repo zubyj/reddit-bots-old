@@ -37,6 +37,21 @@ def is_valid_comment(comment, bots):
                 return False
     return True
 
+# Any comment below the min karma gets deleted.
+def del_bad_comments(bot):
+    min_karma = -3
+    account = bot.get_account()
+    account = account.redditor(account.get_username())
+    for comment in account.comments.new(limit=5):
+        print(comment.body)
+        print()
+        if comment.score < min_karma:
+            print('DELETED')
+            print(comment.body)
+            print(comment.score)
+            print()
+            comment.delete()
+
 def run_the_bots(*bots):
     reddit = bots[0].get_account()
     accepted_ratio = 70
@@ -44,7 +59,6 @@ def run_the_bots(*bots):
         submission.comments.replace_more(limit=None)
         for comment in submission.comments.list():
             if is_valid_comment(comment, bots):
-                # res = get_best_response(comment.body, dwight, michael)
                 bot = get_bot_best_reply(comment.body, dwight, michael)
                 ratio = bot.get_reply()['ratio']
                 if not bot.is_logged(comment.id):
@@ -69,6 +83,7 @@ if __name__ == "__main__":
         #run_bot('MichaelGScottBot', 'michael')
         #run_bot('dwight-schrute-bot', 'dwight')
         dwight = bot('dwight-schrute-bot', 'dwight')
+        del_bad_comments(dwight)
         michael = bot('MichaelGScottBot', 'michael')
         run_the_bots(dwight, michael)
         # run_bot('andy-bernard-bot', 'andy')
