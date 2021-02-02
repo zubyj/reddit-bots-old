@@ -40,8 +40,8 @@ def is_valid_comment(comment, bots):
 # Any comment below the min karma gets deleted.
 def del_bad_comments(bot):
     min_karma = -3
-    account = bot.get_account()
-    account = account.redditor(account.get_username())
+    username = bot.get_username()
+    account = bot.get_account().redditor(username)
     for comment in account.comments.new(limit=5):
         print(comment.body)
         print()
@@ -51,6 +51,7 @@ def del_bad_comments(bot):
             print(comment.score)
             print()
             comment.delete()
+    print('DONE DELETING BAD COMMENTS')
 
 def run_the_bots(*bots):
     reddit = bots[0].get_account()
@@ -67,12 +68,12 @@ def run_the_bots(*bots):
                             comment = bot.get_account().comment(id=comment.id)
                             comment.reply(bot.get_reply()['text'])
                             bot.log_comment(comment)
-                            # bot.get_account().comment(id=comment.id).reply()
                             print(ratio)
                             print("COMMENT " + comment.body)
                             print(bot.get_reply()['text'])
                             print()
-                            time.sleep(60)
+                            del_bad_comments(bot)
+                            sleep_time(180)
 
 def sleep_time(sleep_len):
     print("SLEEPING FOR " + str(sleep_len/60) + " MINUTES") 
@@ -83,8 +84,8 @@ if __name__ == "__main__":
         #run_bot('MichaelGScottBot', 'michael')
         #run_bot('dwight-schrute-bot', 'dwight')
         dwight = bot('dwight-schrute-bot', 'dwight')
-        del_bad_comments(dwight)
         michael = bot('MichaelGScottBot', 'michael')
+        print('THE BOTS ARE NOW ONLINE')
         run_the_bots(dwight, michael)
         # run_bot('andy-bernard-bot', 'andy')
 
