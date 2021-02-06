@@ -37,21 +37,27 @@ def is_valid_comment(comment, bots):
                 return False
     return True
 
-# Any comment below the min karma gets deleted.
-def del_bad_comments(bot):
-    min_karma = -3
-    username = bot.get_username()
-    account = bot.get_account().redditor(username)
-    for comment in account.comments.new(limit=5):
-        print(comment.body)
-        print()
-        if comment.score < min_karma:
-            print('DELETED')
-            print(comment.body)
-            print(comment.score)
-            print()
-            comment.delete()
-    print('DONE DELETING BAD COMMENTS')
+# Writes reddit comment and bots response to given file.
+def log_comment(self, comment):
+    filename = self.get_folder() + '/accepted_log.json'
+    data = self.get_reply()
+    with open(filename) as f:
+        logs = json.load(f)
+    temp = logs["logs"]
+    obj = {
+        "comment":comment.body,
+        "reply":data["text"],
+        "ratio":data["ratio"],
+        "time":datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+        "season":data["season"],
+        "episode":data["episode"],
+        "comment_id":comment.id,
+        "line_id":data["id"]
+    }
+    temp.append(obj)
+    with open(filename, 'w') as f:
+        json.dump(logs, f, indent=4)
+
 
 def run_the_bots(*bots):
     reddit = bots[0].get_account()
@@ -72,7 +78,7 @@ def run_the_bots(*bots):
                             print("COMMENT " + comment.body)
                             print(bot.get_reply()['text'])
                             print()
-                            del_bad_comments(bot)
+                            bot.del_bad_comments
                             sleep_time(180)
 
 def sleep_time(sleep_len):
@@ -88,24 +94,6 @@ if __name__ == "__main__":
         print('THE BOTS ARE NOW ONLINE')
         run_the_bots(dwight, michael)
         # run_bot('andy-bernard-bot', 'andy')
-
-
-# Function is called when bot replies to a comment.
-# Increments the reply_count of line from given id.
-# def increm_reply_count(filename, id):
-#     with open(filename) as f:
-#         data = json.load(f)
-#     lines = data["lines"]
-#     for line in lines:
-#         if line["id"] == id:
-#             count = line["reply_count"] +1
-#             line["reply_count"] = count
-#             print(count)
-#             print(isinstance(count, str))
-#             with open(filename, 'w') as f:
-#                 json.dump(data, f, indent=4)
-#                 return
-
 
 # Makes sure every few comments are unique.
 # def is_unique_comment(filename, line_id):

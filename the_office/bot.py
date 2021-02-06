@@ -68,11 +68,6 @@ class bot:
             "id":bestLine["id"],
         }
 
-    def reply_comment(comment):
-        reddit = self.get_account()
-        reddit.comment(id=comment.id).reply()
-
-
     def is_logged(self, comment_id):
         for log in self.get_accepted_log():
             if log['comment_id'] == comment_id:
@@ -103,3 +98,24 @@ class bot:
         with open(filename, 'w') as f:
             json.dump(logs, f, indent=4)
 
+    def del_bad_comments(self, comment):
+        # Gets the deleted log
+        filename = 'deleted.json'
+        with open(filename) as f:
+            data = json.load(f)
+        temp = data["logs"]
+
+        # Checks 5 past comments & deletes any under -3 karma.
+        min_karma = -3
+        account = self.account.redditor(self.username)
+        for reply in account.comments.new(limit=5):
+            if reply.score < min_karma:
+                obj = {
+                    "name":self.username,
+                    "comment":comment,
+                    "reply":reply.body,
+                    "time":datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+                }
+                temp.append(obj)
+        with open(filename, 'w') as f:
+            json.dump(temp, f, indent=4)
