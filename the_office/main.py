@@ -78,7 +78,7 @@ def run_the_bots(*bots):
                             print("COMMENT " + comment.body)
                             print(bot.get_reply()['text'])
                             print()
-                            bot.del_bad_comments
+                            bot.del_bad_comments()
                             sleep_time(180)
 
 def sleep_time(sleep_len):
