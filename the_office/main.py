@@ -38,7 +38,7 @@ def is_valid_comment(comment, bots):
     return True
 
 # Writes reddit comment and bots response to given file.
-def log_comment(self, comment):
+def log_comment(comment):
     filename = self.get_folder() + '/accepted_log.json'
     data = self.get_reply()
     with open(filename) as f:
