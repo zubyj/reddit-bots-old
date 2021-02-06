@@ -1,0 +1,10 @@
+{
+    "logs": [
+        {
+            "name": "test bot",
+            "commment": "the reddit comment",
+            "reply": "the bot's reply",
+            "ratio": "string matching ratio",
+        }
+    ]
+}
