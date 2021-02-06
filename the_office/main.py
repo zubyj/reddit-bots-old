@@ -5,8 +5,8 @@ from datetime import datetime
 import time
 from bot import bot
 
-# Returns the bot with the best response to given text. 
 def get_bot_best_reply(text, *bots):
+    # Returns the bot with best reply to given text.
     best_bot = bots[0]
     best_bot.set_reply(text)
     for bot in bots:
@@ -16,11 +16,14 @@ def get_bot_best_reply(text, *bots):
             best_bot = bot
     return best_bot
 
-# Checks if reddit comment is valid. 
-#   1. Longer than min_length
-#   2. If one of the bots isn't the author.
-#   3. The bots haven't replied to it.
+
 def is_valid_comment(comment, bots):
+    # Checks if reddit comment is valid
+    #
+    # Valid if 
+    #   1. Our bots didnt write it.
+    #   2. Our bots haven't yet replied to it.
+    #   3. It's longer than min_length
     min_len = 20
     if len(comment.body) < min_len:
         return False
@@ -37,29 +40,14 @@ def is_valid_comment(comment, bots):
                 return False
     return True
 
-# Writes reddit comment and bots response to given file.
-def log_comment(comment):
-    filename = self.get_folder() + '/accepted_log.json'
-    data = self.get_reply()
-    with open(filename) as f:
-        logs = json.load(f)
-    temp = logs["logs"]
-    obj = {
-        "comment":comment.body,
-        "reply":data["text"],
-        "ratio":data["ratio"],
-        "time":datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
-        "season":data["season"],
-        "episode":data["episode"],
-        "comment_id":comment.id,
-        "line_id":data["id"]
-    }
-    temp.append(obj)
-    with open(filename, 'w') as f:
-        json.dump(logs, f, indent=4)
-
-
 def run_the_bots(*bots):
+    # Checks comments in past 15 rising posts.
+    # Gets the best character response to given comment
+    # If response ratio is higher than accepted ratio
+    #   1. Reply to the comment
+    #   2. Log the comment
+    #   3. Delete any past 5 replies with negative karma.
+    #   4. Sleep for 3 minutes
     reddit = bots[0].get_account()
     accepted_ratio = 70
     for submission in reddit.subreddit('all').rising(limit=15):
@@ -83,6 +71,7 @@ def run_the_bots(*bots):
                                 sleep_time(180)
 
 def sleep_time(sleep_len):
+    # Sleep for the specified time
     print("SLEEPING FOR " + str(sleep_len/60) + " MINUTES") 
     time.sleep(sleep_len)
 
