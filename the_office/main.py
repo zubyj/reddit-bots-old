@@ -72,7 +72,7 @@ def run_the_bots(*bots):
                     if not bot.is_logged(comment.id):
                         if ratio > accepted_ratio:
                                 comment = bot.get_account().comment(id=comment.id)
-                                bot_reply = bot.getreply()['text']
+                                bot_reply = bot.get_reply()['text']
                                 comment.reply(bot_reply)
                                 bot.log_comment(comment)
                                 bot.del_bad_comments(bot_reply)

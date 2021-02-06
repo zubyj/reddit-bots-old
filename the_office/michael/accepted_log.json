@@ -2549,6 +2549,16 @@
             "episode": 12,
             "comment_id": "gm7cdtn",
             "line_id": 911
+        },
+        {
+            "comment": "Excellent customer service",
+            "reply": "... customer service is a Hindu person.",
+            "ratio": 72,
+            "time": "05/02/2021 23:48:23",
+            "season": 3,
+            "episode": 6,
+            "comment_id": "gm7msy5",
+            "line_id": 1515
         }
     ]
 }
