@@ -72,13 +72,14 @@ def run_the_bots(*bots):
                     if ratio > accepted_ratio:
                             # the_comment is attached to bot that is going to reply. 
                             comment = bot.get_account().comment(id=comment.id)
-                            comment.reply(bot.get_reply()['text'])
+                            bot_reply = bot.getreply()['text']
+                            comment.reply(bot_reply)
                             bot.log_comment(comment)
                             print(ratio)
                             print("COMMENT " + comment.body)
-                            print(bot.get_reply()['text'])
+                            print(bot_reply)
                             print()
-                            bot.del_bad_comments()
+                            bot.del_bad_comments(bot_reply)
                             sleep_time(180)
 
 def sleep_time(sleep_len):
