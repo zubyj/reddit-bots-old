@@ -16,9 +16,9 @@ def get_bot_best_reply(text, *bots):
             best_bot = bot
     return best_bot
 
-# Comment is valid if 
+# Checks if reddit comment is valid. 
 #   1. Longer than min_length
-#   2. If one of our bots isn't the author.
+#   2. If one of the bots isn't the author.
 #   3. The bots haven't replied to it.
 def is_valid_comment(comment, bots):
     min_len = 20
@@ -62,29 +62,29 @@ def log_comment(self, comment):
 def run_the_bots(*bots):
     reddit = bots[0].get_account()
     accepted_ratio = 70
-    for submission in reddit.subreddit('all').rising(limit=10):
+    for submission in reddit.subreddit('all').rising(limit=15):
         submission.comments.replace_more(limit=None)
-        for comment in submission.comments.list():
-            if is_valid_comment(comment, bots):
-                bot = get_bot_best_reply(comment.body, dwight, michael)
-                ratio = bot.get_reply()['ratio']
-                if not bot.is_logged(comment.id):
-                    if ratio > accepted_ratio:
-                            # the_comment is attached to bot that is going to reply. 
-                            comment = bot.get_account().comment(id=comment.id)
-                            bot_reply = bot.getreply()['text']
-                            comment.reply(bot_reply)
-                            bot.log_comment(comment)
-                            print(ratio)
-                            print("COMMENT " + comment.body)
-                            print(bot_reply)
-                            print()
-                            bot.del_bad_comments(bot_reply)
-                            sleep_time(180)
+        if not submission.over_18:
+            for comment in submission.comments.list():
+                if is_valid_comment(comment, bots):
+                    bot = get_bot_best_reply(comment.body, dwight, michael)
+                    ratio = bot.get_reply()['ratio']
+                    if not bot.is_logged(comment.id):
+                        if ratio > accepted_ratio:
+                                comment = bot.get_account().comment(id=comment.id)
+                                bot_reply = bot.getreply()['text']
+                                comment.reply(bot_reply)
+                                bot.log_comment(comment)
+                                bot.del_bad_comments(bot_reply)
+                                print(ratio)
+                                print("COMMENT " + comment.body)
+                                print(bot_reply)
+                                print()
+                                sleep_time(180)
 
 def sleep_time(sleep_len):
     print("SLEEPING FOR " + str(sleep_len/60) + " MINUTES") 
-    time.sleep(300)
+    time.sleep(sleep_len)
 
 if __name__ == "__main__":
     while (True):
@@ -92,7 +92,7 @@ if __name__ == "__main__":
         #run_bot('dwight-schrute-bot', 'dwight')
         dwight = bot('dwight-schrute-bot', 'dwight')
         michael = bot('MichaelGScottBot', 'michael')
-        print('THE BOTS ARE NOW ONLINE')
+        print('RUNNING THE BOTS')
         run_the_bots(dwight, michael)
         # run_bot('andy-bernard-bot', 'andy')
 
