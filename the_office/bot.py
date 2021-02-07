@@ -77,8 +77,8 @@ class bot:
                 return True
         return False
 
-    # Writes reddit comment and bots response to given file.
     def log_comment(self, comment):
+        # Writes reddit comment and bots response to given file.
         filename = self.get_folder() + '/accepted_log.json'
         data = self.get_reply()
         with open(filename) as f:
@@ -98,7 +98,7 @@ class bot:
         with open(filename, 'w') as f:
             json.dump(logs, f, indent=4)
 
-    def del_bad_comments(self, comment):
+    def del_neg_comments(self, comment):
         # Gets the deleted log
         filename = 'deleted.json'
         with open(filename) as f:
