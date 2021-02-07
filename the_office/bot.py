@@ -107,16 +107,17 @@ class bot:
 
         # Checks 5 past comments & deletes any under -3 karma.
         min_karma = -3
-        my_account = self.account.redditor(self.username)
+        name = self.username
+        my_account = self.account.redditor(name)
         for reply in my_account.comments.new(limit=5):
             if reply.score < min_karma:
                 obj = {
-                    "name":self.username,
+                    "name":name,
                     "comment":comment,
                     "reply":reply.body,
                     "time":datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
                 }
-                temp.append(obj)
                 reply.delete()
+                temp.append(obj)
         with open(filename, 'w') as f:
             json.dump(temp, f, indent=4)
