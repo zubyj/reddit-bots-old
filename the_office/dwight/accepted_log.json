@@ -2203,6 +2203,26 @@
             "episode": 17,
             "comment_id": "gmcw2au",
             "line_id": 527
+        },
+        {
+            "comment": "Looks like fried chicken",
+            "reply": "Hmm. It wasn't here before.",
+            "ratio": 74,
+            "time": "07/02/2021 02:14:58",
+            "season": 5,
+            "episode": 12,
+            "comment_id": "gme8636",
+            "line_id": 1605
+        },
+        {
+            "comment": "That is the most evilest thing I could imagine",
+            "reply": "He's right. Cops can't do anything until a crime has been reported.",
+            "ratio": 71,
+            "time": "07/02/2021 02:27:19",
+            "season": 6,
+            "episode": 5,
+            "comment_id": "gme9zbc",
+            "line_id": 1966
         }
     ]
 }
