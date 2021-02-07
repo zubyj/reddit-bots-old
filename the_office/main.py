@@ -63,7 +63,7 @@ def run_the_bots(*bots):
                                 bot_reply = bot.get_reply()['text']
                                 comment.reply(bot_reply)
                                 bot.log_comment(comment)
-                                bot.del_bad_comments(bot_reply)
+                                bot.del_neg_comments(bot_reply)
                                 print(ratio)
                                 print("COMMENT " + comment.body)
                                 print(bot_reply)
