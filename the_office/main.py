@@ -44,8 +44,8 @@ def run_the_bots(*bots):
     # Checks comments in past 15 rising posts.
     # Gets the best character response to given comment
     # If response ratio is higher than accepted ratio
-    #   1. Reply to the comment
-    #   2. Log the comment
+    #   1. Reply to the comment with char response.
+    #   2. Log the comment.
     #   3. Delete any past 5 replies with negative karma.
     #   4. Sleep for 3 minutes
     reddit = bots[0].get_account()
@@ -60,40 +60,25 @@ def run_the_bots(*bots):
                     if not bot.is_logged(comment.id):
                         if ratio > accepted_ratio:
                                 comment = bot.get_account().comment(id=comment.id)
-                                bot_reply = bot.get_reply()['text']
-                                comment.reply(bot_reply)
+                                reply = bot.get_reply()
+                                comment.reply(reply['text'])
                                 bot.log_comment(comment)
-                                bot.del_neg_comments(bot_reply)
+                                bot.del_neg_comments()
                                 print(ratio)
                                 print("COMMENT " + comment.body)
-                                print(bot_reply)
+                                print(bot_reply['text'])
                                 print()
                                 sleep_time(180)
 
 def sleep_time(sleep_len):
-    # Sleep for the specified time
     print("SLEEPING FOR " + str(sleep_len/60) + " MINUTES") 
     time.sleep(sleep_len)
 
 if __name__ == "__main__":
     while (True):
-        #run_bot('MichaelGScottBot', 'michael')
-        #run_bot('dwight-schrute-bot', 'dwight')
         dwight = bot('dwight-schrute-bot', 'dwight')
         michael = bot('MichaelGScottBot', 'michael')
+        dwight.del_neg_comments()
+        michael.del_neg_comments()
         print('RUNNING THE BOTS')
         run_the_bots(dwight, michael)
-        # run_bot('andy-bernard-bot', 'andy')
-
-# Makes sure every few comments are unique.
-# def is_unique_comment(filename, line_id):
-#     unique_factor = 5
-#     with open(filename) as f:
-#         data = json.load(f)
-#     logs = data["logs"]
-#     length = len(logs)
-#     index = len(logs)
-#     for i in range(index, length):
-#         if line_id == logs[i]["line_id"]:
-#             return False
-#     return True

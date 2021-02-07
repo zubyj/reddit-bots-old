@@ -98,12 +98,12 @@ class bot:
         with open(filename, 'w') as f:
             json.dump(logs, f, indent=4)
 
-    def del_neg_comments(self, comment):
+    def del_neg_comments(self):
         # Gets the deleted log
-        filename = 'deleted.json'
+        filename = self.folder + '/deleted.json'
         with open(filename) as f:
-            data = json.load(f)
-        temp = data["logs"]
+            logs = json.load(f)
+        temp = logs["logs"]
 
         # Checks 5 past comments & deletes any under -3 karma.
         min_karma = -3
@@ -112,11 +112,13 @@ class bot:
             if reply.score < min_karma:
                 obj = {
                     "name":self.name,
-                    "comment":comment,
+                    "comment":reply.parent().body,
                     "reply":reply.body,
+                    "karma":reply.score,
                     "time":datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
                 }
                 reply.delete()
                 temp.append(obj)
+
         with open(filename, 'w') as f:
-            json.dump(temp, f, indent=4)
+            json.dump(logs, f, indent=4)

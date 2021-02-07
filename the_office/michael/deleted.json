@@ -5,6 +5,12 @@
             "commment": "the reddit comment",
             "reply": "the bot's reply",
             "time": "string matching ratio"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "test",
+            "reply": "That sounds pretty biased.",
+            "time": "07/02/2021 11:45:13"
         }
     ]
 }
