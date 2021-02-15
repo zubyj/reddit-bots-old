@@ -51,7 +51,7 @@ def run_the_bots(*bots):
     #   3. Delete any past 5 replies with negative karma.
     #   4. Sleep for 3 minutes
     reddit = bots[0].get_account()
-    accepted_ratio = 75
+    accepted_ratio = 70
     for submission in reddit.subreddit('all').rising(limit=15):
         submission.comments.replace_more(limit=None)
         if not submission.over_18:
