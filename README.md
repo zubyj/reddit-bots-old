@@ -12,7 +12,7 @@ Reddit bots which emulate TV characters & reply to comments with quotes from the
 ---
 
 ## How it works
- >Reddit comments are compared to lines that the character has responded to. If the line and comment are similar, the bot will get the character's response and reply to the comment.
+Reddit comments are compared to lines that the character has responded to. If the line and comment are similar, the bot will get the character's response and reply to the comment.
 
 ## Example 
 > In Season 3 Episode 9, Dwight and Michael have an exchange:
