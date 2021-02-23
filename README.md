@@ -1,4 +1,4 @@
-# reddit-bots
+# Reddit bots
 ## Overview
 Reddit bots which emulate TV characters & reply to comments with quotes from the character.
 
