@@ -8,7 +8,6 @@
 ### The Office
 * [Dwight Schrute](http://reddit.com/u/dwight-schrute-bot)
 * [Michael Scott](https://www.reddit.com/user/michaelgscottbot)
-* [Andy Bernard](https://www.reddit.com/user/andy-bernard-bot)
 
 ---
 
@@ -22,8 +21,8 @@ In Season 3 Episode 9, Dwight and Michael have an exchange:
 
 >Michael : "The worst thing about prison was the... was the Dementors. They... were flying all over the place, and they were scary. And they'd come down, and they'd suck the soul out of your body, and it hurt!."
 
-If the Reddit comment is "What's the worst thing about prison," the match will be detected and the Michael Scott Bot will automatically reply with his response from the show. 
-
+If Reddit comment is "What's the worst thing about prison" the match will be detected and the Michael Scott Bot will automatically reply with the line above.
+(https://static.wikia.nocookie.net/theoffice/images/9/96/Prisonmike.png/revision/latest?cb=20100327171549)
 ---
 
 ## How replies are decided
