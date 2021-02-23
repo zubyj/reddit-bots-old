@@ -22,7 +22,7 @@ In Season 3 Episode 9, Dwight and Michael have an exchange:
 >Michael : "The worst thing about prison was the... was the Dementors. They... were flying all over the place, and they were scary. And they'd come down, and they'd suck the soul out of your body, and it hurt!."
 
 If Reddit comment is "What's the worst thing about prison" the match will be detected and the Michael Scott Bot will automatically reply with the line above.
-(./the_office/michael/Prisonmike.png)
+(the_office/michael/Prisonmike.png)
 ---
 
 ## How replies are decided
