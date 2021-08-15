@@ -1,0 +1,191 @@
+{
+    "logs": [
+        {
+            "name": "test bot",
+            "commment": "the reddit comment",
+            "reply": "the bot's reply",
+            "time": "string matching ratio"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "test",
+            "reply": "That sounds pretty biased.",
+            "time": "07/02/2021 11:45:13"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "Hwo would it do that?",
+            "reply": "It's not... Nevermind. Nothing.",
+            "karma": -4,
+            "time": "07/02/2021 17:42:03"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "haha thank you very much !!",
+            "reply": "Yeah, here we go. Ok.",
+            "karma": -5,
+            "time": "08/02/2021 00:15:07"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "That is amazing! \ud83e\udd17\ud83e\udd17\ud83e\udd17",
+            "reply": "Thank you very much. It is from Italy.  Actually--- no, Bulgaria.",
+            "karma": -4,
+            "time": "08/02/2021 11:14:33"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "They're going to do that anyway.",
+            "reply": "Hey! Look at what you're wearing again, Pam. Have you ever seen a magician's assistant?  That's...",
+            "karma": -6,
+            "time": "08/02/2021 22:27:53"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "Are u being sarcastic?",
+            "reply": "Yes, I am, absolutely. So, the next call we get I'd like you to smile. I'd like to see a big smile.",
+            "karma": -6,
+            "time": "09/02/2021 05:14:01"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "What does martial language mean?",
+            "reply": " How you doing?",
+            "karma": -10,
+            "time": "09/02/2021 12:14:29"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "Why are these two even friends?",
+            "reply": "The two levels being, uh, 'Welcome to Scranton'...",
+            "karma": -4,
+            "time": "09/02/2021 17:27:17"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "WTF do you think homework is for?",
+            "reply": "It's just, we need to get her out of here because no one is going to want to go in there with a woman writhing around on the floor. Wait, wait, wait. But most importantly we need to get her some medical attention. ASAP. Stat.",
+            "karma": -4,
+            "time": "09/02/2021 19:42:33"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "That doesn't seem very healthy",
+            "reply": "You wanna talk about fair?  Does anyone need to smell my old carpet?  You explain to me how that was fair, and I'll explain to you how this is fair.  Plus I just... I think that picking today was sort of taking advantage.",
+            "karma": -20,
+            "time": "10/02/2021 16:24:02"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "Thank you so much! \u2764\ufe0f",
+            "reply": "Yeah, here we go. Ok.",
+            "karma": -4,
+            "time": "10/02/2021 17:03:51"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "This is the best thing.",
+            "reply": "Oh that's mine actually. Um, maybe put it back in the truck.",
+            "karma": -4,
+            "time": "10/02/2021 20:51:50"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "This is a very underrated comment",
+            "reply": "Really? What's going on?",
+            "karma": -6,
+            "time": "11/02/2021 00:55:54"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "Where do you see John Cena?",
+            "reply": "Well,  I've actually done a lot of thinking about that.  And in ten years, I am living in a big house, with my kids.  And in this house we have screens on the walls that have famous art on them and I have a remote that works everything, that has like a belt-loop attachment, or in my ear, like a gluetooth.  And, because it's the future, I can take just a little tiny pill and get all my vitamins for the whole day.",
+            "karma": -5,
+            "time": "12/02/2021 02:12:25"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "I think that's Urek",
+            "reply": "I don't think so, no.",
+            "karma": -5,
+            "time": "12/02/2021 07:00:15"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "Yeah I loved it too \ud83d\ude42",
+            "reply": "Yes you did. Yes, you did. Just checkin'. Just checkin', double checkin', checkin' on the check. Thoroughness is very important in an office and...",
+            "karma": -4,
+            "time": "12/02/2021 09:03:14"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "Yeah that's incredible.",
+            "reply": "Now you ruined it.",
+            "karma": -7,
+            "time": "12/02/2021 19:38:43"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "That's some love right there.",
+            "reply": "That's my white out. Get your own white out. Just... what's the matter with you? God.  Okay, um, there was a girl from Dunder Mifflin. Who had a big, puttifflin.  Mifflin, spifflin.",
+            "karma": -4,
+            "time": "13/02/2021 02:11:03"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "Thank you so much!",
+            "reply": "Yeah, here we go. Ok.",
+            "karma": -4,
+            "time": "13/02/2021 02:20:42"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "That's amazing!",
+            "reply": "Okay, I'm Aquaman. Where does he live, guys?",
+            "karma": -6,
+            "time": "13/02/2021 04:57:46"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "Thank you so much",
+            "reply": "Yeah, here we go. Ok.",
+            "karma": -8,
+            "time": "13/02/2021 09:16:12"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "Thank you so much",
+            "reply": "Yeah, here we go. Ok.",
+            "karma": -4,
+            "time": "13/02/2021 09:48:10"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "That\u2019s hilarious lmao",
+            "reply": "No it is- don't! I'm not gonna bump. I'm not gonna bump. And it was not hilarious. It was very, very terrifying.",
+            "karma": -5,
+            "time": "13/02/2021 10:54:08"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "When did he say that?",
+            "reply": "Because he's mean.  He's, he's like a really mean-spirited guy.  He talks about how gay Oscar is...",
+            "karma": -8,
+            "time": "13/02/2021 20:34:50"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "That's not how existing works",
+            "reply": "I would not... steal the bread.  And I would not let my family go hungry.",
+            "karma": -5,
+            "time": "14/02/2021 00:46:23"
+        },
+        {
+            "name": "MichaelGScottBot",
+            "comment": "What the hell are you talking about? He didn't shoot anyone!",
+            "reply": "Well, we are talking about how to properly honor a man who gave his life as regional manager of this company, Jan.",
+            "karma": -5,
+            "time": "14/02/2021 00:52:29"
+        }
+    ]
+}

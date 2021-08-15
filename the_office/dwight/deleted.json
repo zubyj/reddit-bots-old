@@ -1,0 +1,122 @@
+{
+    "logs": [
+        {
+            "name": "test bot",
+            "commment": "the reddit comment",
+            "reply": "the bot's reply",
+            "time": "string matching ratio"
+        },
+        {
+            "name": "dwight-schrute-bot",
+            "comment": "Where's the zoomies?",
+            "reply": "You're the Quizno's.  Jan, may I introduce to you your own personal Dunder Mifflin liaison, devoted to servicing this account with total client satisfaction. I sensed that Molly wasn't quite meeting your needs -- nothing like, uh, your old assistant... Hunter. Was that his name?",
+            "karma": -4,
+            "time": "07/02/2021 14:49:26"
+        },
+        {
+            "name": "dwight-schrute-bot",
+            "comment": "I also think you look cool!",
+            "reply": "Doesn't Charles know he's compromising my attack readiness? It's not a dress code. It's a death sentence.",
+            "karma": -5,
+            "time": "08/02/2021 12:54:13"
+        },
+        {
+            "name": "dwight-schrute-bot",
+            "comment": "I think you look cool",
+            "reply": "Doesn't Charles know he's compromising my attack readiness? It's not a dress code. It's a death sentence.",
+            "karma": -11,
+            "time": "08/02/2021 12:54:13"
+        },
+        {
+            "name": "dwight-schrute-bot",
+            "comment": "I'd rather have someone else",
+            "reply": "You can't have the bowl! Oscar Martinez, cheer or fear? Belsnickel is here! I judge your year ...as impish!",
+            "karma": -19,
+            "time": "09/02/2021 00:42:51"
+        },
+        {
+            "name": "dwight-schrute-bot",
+            "comment": "And thank you for that",
+            "reply": "When you land, try and land like an eight year-old.  These bouncy castles are not designed for adults.",
+            "karma": -4,
+            "time": "09/02/2021 07:28:33"
+        },
+        {
+            "name": "dwight-schrute-bot",
+            "comment": "I really appreciate it \ud83d\ude0a",
+            "reply": "Thanks, Michael.  Wait, what is this?",
+            "karma": -20,
+            "time": "09/02/2021 10:56:57"
+        },
+        {
+            "name": "dwight-schrute-bot",
+            "comment": "That's not a very good analogy tho.",
+            "reply": "Please... and how many foremen do you know that pull boxes?",
+            "karma": -6,
+            "time": "09/02/2021 19:23:25"
+        },
+        {
+            "name": "dwight-schrute-bot",
+            "comment": "What's wrong with frozen Dino nugs?",
+            "reply": "These sleeves are cutting off my circulation. Not enough blood getting to my hands.",
+            "karma": -5,
+            "time": "09/02/2021 21:49:40"
+        },
+        {
+            "name": "dwight-schrute-bot",
+            "comment": "Damn straight! Thank you.",
+            "reply": "Please be seated.",
+            "karma": -5,
+            "time": "10/02/2021 16:59:44"
+        },
+        {
+            "name": "dwight-schrute-bot",
+            "comment": "Where was this?",
+            "reply": "You're the Quizno's.  Jan, may I introduce to you your own personal Dunder Mifflin liaison, devoted to servicing this account with total client satisfaction. I sensed that Molly wasn't quite meeting your needs -- nothing like, uh, your old assistant... Hunter. Was that his name?",
+            "karma": -4,
+            "time": "12/02/2021 11:43:31"
+        },
+        {
+            "name": "dwight-schrute-bot",
+            "comment": "Entirely not the point.",
+            "reply": "That's exactly the point.  You've hit a slump. It happens to the best of us.  You just have to remember, you know-",
+            "karma": -5,
+            "time": "12/02/2021 20:03:33"
+        },
+        {
+            "name": "dwight-schrute-bot",
+            "comment": "You\u2019re right it is!",
+            "reply": "Yes. He's got to stand up to this mafia guy.",
+            "karma": -7,
+            "time": "13/02/2021 09:36:00"
+        },
+        {
+            "name": "dwight-schrute-bot",
+            "comment": "You're welcome.",
+            "reply": "The principle is sound. To avoid illness, expose yourself to germs, enabling your immune system to develop antibodies. I don't know why everyone doesn't do this. Maybe they have something against living forever.",
+            "karma": -4,
+            "time": "13/02/2021 10:46:42"
+        },
+        {
+            "name": "dwight-schrute-bot",
+            "comment": "You are a wordsmith of high order.",
+            "reply": "You are out of order.",
+            "karma": -4,
+            "time": "13/02/2021 19:20:27"
+        },
+        {
+            "name": "dwight-schrute-bot",
+            "comment": "You're welcome.",
+            "reply": "The principle is sound. To avoid illness, expose yourself to germs, enabling your immune system to develop antibodies. I don't know why everyone doesn't do this. Maybe they have something against living forever.",
+            "karma": -59,
+            "time": "14/02/2021 03:29:07"
+        },
+        {
+            "name": "dwight-schrute-bot",
+            "comment": "You're welcome.",
+            "reply": "The principle is sound. To avoid illness, expose yourself to germs, enabling your immune system to develop antibodies. I don't know why everyone doesn't do this. Maybe they have something against living forever.",
+            "karma": -6,
+            "time": "14/02/2021 03:29:08"
+        }
+    ]
+}
