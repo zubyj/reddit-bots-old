@@ -29,7 +29,7 @@ def is_valid_comment(comment, bots):
         print('Comment : ' + comment.body)
         return False
     else:
-        length = len(comment.body)
+        length = str(len(comment.body))
         print('comment long enough with length ' + length)
         print('comment : ' + comment.body)
     for bot in bots:
