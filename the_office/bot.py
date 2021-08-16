@@ -11,16 +11,18 @@ class bot:
         self.name = name
         self.account = praw.Reddit(name)
 
-        # Get given bot's lines & accepted/rejected logs. 
+        # Get replies, accepted, rejected files. 
         self.folder = folder
         lines = folder + '/replies.json'
         self.accepted_path = folder + '/accepted_log.json'
         rejected = folder + '/rejected_log.json'
-
         with open(lines) as f, open(self.accepted_path) as f2, open(rejected) as f3:
-            self.lines = json.load(f)['lines']
-            self.accepted = json.load(f2)['logs']
-            self.rejeced = json.load(f3)['logs']
+            data1 = json.load(f)
+            data2 = json.load(f2)
+            data3 = json.load(f3)
+        self.lines = data1['lines']
+        self.accepted = data2['logs']
+        self.rejected = data3['logs']
         self.reply = {}
 
     def get_username(self):
