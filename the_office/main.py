@@ -23,15 +23,9 @@ def is_valid_comment(comment, bots):
     #   1. Our bots didnt write the comment.
     #   2. Our bots haven't yet replied to the comment.
     #   3. The comment is long enough.
-    min_len = 25
+    min_len = 40
     if len(comment.body) < min_len:
-        print('comment too short')
-        print('Comment : ' + comment.body)
         return False
-    else:
-        length = str(len(comment.body))
-        print('comment long enough with length ' + length)
-        print('comment : ' + comment.body)
     for bot in bots:
         if comment.author == bot.get_username():
             return False
@@ -54,7 +48,7 @@ def run_the_bots(*bots):
     #   3. Delete any past 5 replies with negative karma.
     #   4. Sleep for 3 minutes
     reddit = bots[0].get_account()
-    accepted_ratio = 70
+    accepted_ratio = 80
     for submission in reddit.subreddit('all').rising(limit=15):
         submission.comments.replace_more(limit=None)
         if not submission.over_18:
@@ -66,14 +60,14 @@ def run_the_bots(*bots):
                         if ratio > accepted_ratio:
                                 comment = bot.get_account().comment(id=comment.id)
                                 bot_reply = bot.get_reply()['text']
-                                comment.reply(bot_reply)
-                                bot.log_comment(comment)
-                                # Deletes comments under -3 karma. Will
-                                # bot.del_bad_comments(bot_reply)
                                 print(ratio)
                                 print("COMMENT " + comment.body)
                                 print(bot_reply)
                                 print()
+                                comment.reply(bot_reply)
+                                bot.log_comment(comment)
+                                # Deletes comments under -3 karma. 
+                                # bot.del_bad_comments(bot_reply)
                                 sleep_time(180)
 
 def sleep_time(sleep_len):
