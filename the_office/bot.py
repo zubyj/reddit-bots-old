@@ -17,21 +17,17 @@ class bot:
         self.accepted_path = folder + '/accepted_log.json'
         rejected = folder + '/rejected_log.json'
 
-        with open(lines) as f:
-            self.lines = json.load(f)
-            
-        # with open(lines) as f, open(self.accepted_path) as f2, open(rejected) as f3:
-        #     self.lines = json.load(f)['lines']
-        #     self.accepted = json.load(f)['logs']
-        #     self.rejeced = json.load(f)['logs']
-
+        with open(lines) as f, open(self.accepted_path) as f2, open(rejected) as f3:
+            self.lines = json.load(f)['lines']
+            self.accepted = json.load(f)['logs']
+            self.rejeced = json.load(f)['logs']
         self.reply = {}
 
     def get_username(self):
         return self.name
 
     def get_accepted_path(self):
-        return accepted_path
+        return self.accepted_path
 
     def get_folder(self):
         return self.folder
