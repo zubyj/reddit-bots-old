@@ -19,8 +19,8 @@ class bot:
 
         with open(lines) as f, open(self.accepted_path) as f2, open(rejected) as f3:
             self.lines = json.load(f)['lines']
-            self.accepted = json.load(f)['logs']
-            self.rejeced = json.load(f)['logs']
+            self.accepted = json.load(f2)['logs']
+            self.rejeced = json.load(f3)['logs']
         self.reply = {}
 
     def get_username(self):
