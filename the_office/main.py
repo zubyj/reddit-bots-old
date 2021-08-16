@@ -68,7 +68,7 @@ def run_the_bots(*bots):
                                 bot.log_comment(comment)
                                 # Deletes comments under -3 karma. 
                                 # bot.del_bad_comments(bot_reply)
-                                sleep_time(600)
+                                sleep_time(300)
 
 def sleep_time(sleep_len):
     # Sleep for the specified time
@@ -81,6 +81,8 @@ if __name__ == "__main__":
         michael = bot('MichaelGScottBot', 'michael')
         print('RUNNING THE BOTS at ' + datetime.now().strftime("%H:%M:%S"))
         run_the_bots(dwight, michael)
+        sleep_time(300)
+
 
 # Makes sure every few comments are unique.
 # def is_unique_comment(filename, line_id):
