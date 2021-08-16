@@ -50923,20 +50923,6 @@
             "episode": 18,
             "line": {
                 "character": "Charles",
-                "text": " Thank you very much."
-            },
-            "response": {
-                "character": "Michael",
-                "text": "Yeah, here we go. Ok."
-            },
-            "reply_count": 0,
-            "id": 3638
-        },
-        {
-            "season": 5,
-            "episode": 18,
-            "line": {
-                "character": "Charles",
                 "text": "Yeah, I mean, come on. This is a work place. It isn't designed for your vanity."
             },
             "response": {
