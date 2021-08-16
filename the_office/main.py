@@ -79,7 +79,7 @@ if __name__ == "__main__":
     while (True):
         dwight = bot('dwight-schrute-bot', 'dwight')
         michael = bot('MichaelGScottBot', 'michael')
-        print('RUNNING THE BOTS')
+        print('RUNNING THE BOTS at ' + datetime.now().strftime("%H:%M:%S"))
         run_the_bots(dwight, michael)
 
 # Makes sure every few comments are unique.
