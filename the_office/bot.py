@@ -11,18 +11,20 @@ class bot:
         self.name = name
         self.account = praw.Reddit(name)
 
-        # Get replies, accepted, rejected files. 
+        # Get given bot's lines & accepted/rejected logs. 
         self.folder = folder
         lines = folder + '/replies.json'
         self.accepted_path = folder + '/accepted_log.json'
         rejected = folder + '/rejected_log.json'
-        with open(lines) as f, open(self.accepted_path) as f2, open(rejected) as f3:
-            data1 = json.load(f)
-            data2 = json.load(f2)
-            data3 = json.load(f3)
-        self.lines = data1['lines']
-        self.accepted = data2['logs']
-        self.rejected = data3['logs']
+
+        with open(lines) as f:
+            self.lines = json.load(f)
+            
+        # with open(lines) as f, open(self.accepted_path) as f2, open(rejected) as f3:
+        #     self.lines = json.load(f)['lines']
+        #     self.accepted = json.load(f)['logs']
+        #     self.rejeced = json.load(f)['logs']
+
         self.reply = {}
 
     def get_username(self):
@@ -77,8 +79,8 @@ class bot:
                 return True
         return False
 
+    # Writes reddit comment and bots response to given file.
     def log_comment(self, comment):
-        # Writes reddit comment and bots response to given file.
         filename = self.get_folder() + '/accepted_log.json'
         data = self.get_reply()
         with open(filename) as f:
@@ -98,12 +100,12 @@ class bot:
         with open(filename, 'w') as f:
             json.dump(logs, f, indent=4)
 
-    def del_neg_comments(self):
+    def del_bad_comments(self, comment):
         # Gets the deleted log
-        filename = self.folder + '/deleted.json'
+        filename = 'deleted.json'
         with open(filename) as f:
-            logs = json.load(f)
-        temp = logs["logs"]
+            data = json.load(f)
+        temp = data["logs"]
 
         # Checks 5 past comments & deletes any under -3 karma.
         min_karma = -3
@@ -112,13 +114,11 @@ class bot:
             if reply.score < min_karma:
                 obj = {
                     "name":self.name,
-                    "comment":reply.parent().body,
+                    "comment":comment,
                     "reply":reply.body,
-                    "karma":reply.score,
                     "time":datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
                 }
                 reply.delete()
                 temp.append(obj)
-
         with open(filename, 'w') as f:
-            json.dump(logs, f, indent=4)
+            json.dump(temp, f, indent=4)
