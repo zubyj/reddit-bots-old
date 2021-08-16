@@ -29,7 +29,8 @@ def is_valid_comment(comment, bots):
         print('Comment : ' + comment.body)
         return False
     else:
-        print('comment long enough with length ' + len(comment.body))
+        length = len(comment.body)
+        print('comment long enough with length ' + length)
         print('comment : ' + comment.body)
     for bot in bots:
         if comment.author == bot.get_username():
