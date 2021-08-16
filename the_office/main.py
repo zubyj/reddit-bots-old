@@ -68,7 +68,7 @@ def run_the_bots(*bots):
                                 bot.log_comment(comment)
                                 # Deletes comments under -3 karma. 
                                 # bot.del_bad_comments(bot_reply)
-                                sleep_time(180)
+                                sleep_time(600)
 
 def sleep_time(sleep_len):
     # Sleep for the specified time
