@@ -1,5 +1,5 @@
-import praw
 import json
+import praw
 from fuzzywuzzy import fuzz
 from datetime import datetime
 import time
@@ -40,15 +40,24 @@ def is_valid_comment(comment, bots):
     return True
 
 def run_the_bots(*bots):
-    # Checks comments in past 15 rising posts.
-    # Gets the best character response to given comment
-    # If response ratio is higher than accepted ratio
-    #   1. Reply to the comment
-    #   2. Log the comment
-    #   3. Delete any past 5 replies with negative karma.
-    #   4. Sleep for 3 minutes
+    '''
+    Here's the main algorithm
+
+    1. Search  comments in the rising category
+    2. If comment is close enough to a line in the show 
+    2. Compare comment to every line our given character has responded to
+    3. If the comment matches the line with a certainty, reply to the comment with our characters response.
+
+
+    We do a few things when the match is detected
+    1. Replies to the comment
+    2. Logs the comment
+    3. Deletes past replies with negative karma
+    4. Search comments in the rising category
+    5. Sleep for n minutes
+    '''
     reddit = bots[0].get_account()
-    accepted_ratio = 75
+    accepted_ratio = 90
     for submission in reddit.subreddit('all').rising(limit=15):
         submission.comments.replace_more(limit=None)
         if not submission.over_18:
